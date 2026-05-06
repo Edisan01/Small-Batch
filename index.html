@@ -558,6 +558,16 @@ nav.scrolled .nav-links a{color:#767676;}
 .map-wrap iframe{width:100%;height:100%;border:none;}
 
 /* ── RESERVE ── */
+.wa-mobile-banner{
+  display:none;
+  align-items:center;justify-content:center;gap:0.8rem;
+  background:#25D366;color:#fff;
+  padding:1rem 1.5rem;
+  font-size:0.85rem;letter-spacing:0.08em;font-weight:500;
+  text-decoration:none;width:100%;box-sizing:border-box;
+  margin-bottom:2rem;border-radius:4px;
+}
+.wa-mobile-banner svg{flex-shrink:0;}
 .reserve-section{
   padding:5rem 4rem;background:#111010;
   border-top:0.5px solid rgba(247,244,239,0.04);
@@ -733,6 +743,13 @@ section + section,
 
 /* ── MOBILE OVERHAUL ── */
 @media(max-width:768px){
+  #bean-wrap{right:5px !important;width:24px !important;height:24px !important;}
+  /* Hide non-essential sections on mobile */
+  .week-section{display:none !important;}
+  .herkunft-section{display:none !important;}
+  .quote-section{display:none !important;}
+  .review-section{display:none !important;}
+  #cup-wrap{right:5px !important;width:90px !important;height:81px !important;bottom:60px !important;}
   /* Hide desktop cursor */
   body{cursor:auto;}
   #cursor,#cursor-ring{display:none;}
@@ -744,13 +761,11 @@ section + section,
   .nav-center{font-size:0.58rem;gap:5px;}
 
   /* HERO */
-  .hero-content{padding:0 1.2rem 2rem;}
-  .hero-big-text{font-size:clamp(2.4rem,9vw,3.5rem);}
-  .hero-meta{
-    flex-direction:column;gap:0.4rem;
-    font-size:0.65rem;
-  }
+  .hero-content{padding:0 1.2rem 2rem;justify-content:flex-end;}
+  .hero-big-text{font-size:clamp(1.7rem,6.5vw,2.2rem);}
+  .hero-meta{display:none;}
   .hero-cta-wrap{flex-direction:column;gap:0.6rem;width:100%;}
+  .hero-btn-outline{display:none;}
   .hero-btn{width:100%;text-align:center;padding:1rem;}
   .hero-scroll{display:none;}
 
@@ -804,8 +819,23 @@ section + section,
   .map-wrap{height:220px;}
 
   /* RESERVE */
-  .reserve-section{padding:3rem 1.2rem;}
+  .wa-mobile-banner{
+  display:none;
+  align-items:center;justify-content:center;gap:0.8rem;
+  background:#25D366;color:#fff;
+  padding:1rem 1.5rem;
+  font-size:0.85rem;letter-spacing:0.08em;font-weight:500;
+  text-decoration:none;width:100%;box-sizing:border-box;
+  margin-bottom:2rem;border-radius:4px;
+}
+.wa-mobile-banner svg{flex-shrink:0;}
+.reserve-section{padding:3rem 1.2rem;}
   .reserve-inner{grid-template-columns:1fr;gap:2rem;}
+  .wa-mobile-banner{display:flex;}
+  /* Reorder: Founders before Hours on mobile */
+  .hours-section{order:2;}
+  .founders-section{order:1;}
+  #kaffee ~ section{display:flex;flex-direction:column;}
   .form-row{grid-template-columns:1fr;}
   .form-submit{width:100%;text-align:center;}
 
@@ -996,8 +1026,10 @@ button:active{transform:scale(0.97);}
 .drink-card--bags .drink-badge{color:#8a6a3a;}
 .drink-card.hidden{display:none;}
 @media(max-width:768px){
-  .cat-filters{padding:0 1.2rem 1.2rem;gap:0.4rem;}
-  .cat-btn{font-size:0.58rem;padding:0.4rem 0.8rem;}
+  .cat-filters{padding:0 1.2rem 1.2rem;gap:0.5rem;flex-wrap:wrap;}
+  .cat-btn{font-size:0.62rem;padding:0.7rem 1rem;min-height:44px;}
+  .cat-btn[data-cat="bags"]{display:none;}
+  .cat-btn[data-cat="noncoffee"]{display:none;}
 }
 
 
@@ -1040,8 +1072,10 @@ button:active{transform:scale(0.97);}
 .drink-card--bags .drink-badge{color:#8a6a3a;}
 .drink-card.hidden{display:none;}
 @media(max-width:768px){
-  .cat-filters{padding:0 1.2rem 1.2rem;gap:0.4rem;}
-  .cat-btn{font-size:0.58rem;padding:0.4rem 0.8rem;}
+  .cat-filters{padding:0 1.2rem 1.2rem;gap:0.5rem;flex-wrap:wrap;}
+  .cat-btn{font-size:0.62rem;padding:0.7rem 1rem;min-height:44px;}
+  .cat-btn[data-cat="bags"]{display:none;}
+  .cat-btn[data-cat="noncoffee"]{display:none;}
 }
 
 
@@ -1334,7 +1368,7 @@ nav.scrolled .lang-switch span { color:rgba(17,16,14,0.2) !important; }
 
 
 <!-- BEWERTUNG -->
-<section style="padding:3rem 4rem;background:#f7f4ef;border-top:0.5px solid rgba(26,26,26,0.06);text-align:center;">
+<section class="review-section" style="padding:3rem 4rem;background:#f7f4ef;border-top:0.5px solid rgba(26,26,26,0.06);text-align:center;">
   <div class="eyebrow" style="margin-bottom:0.8rem;" data-i18n="review-eyebrow">Hat es euch gefallen?</div>
   <h2 style="font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-style:italic;font-weight:400;margin-bottom:0.6rem;" data-i18n="review-title">Teilt eure Erfahrung.</h2>
   <p style="font-size:0.82rem;color:#767676;font-weight:300;margin-bottom:1.8rem;" data-i18n="review-text">Jede Bewertung hilft uns — und dem nächsten Gast, der sich traut.</p>
@@ -1406,6 +1440,11 @@ nav.scrolled .lang-switch span { color:rgba(17,16,14,0.2) !important; }
 <!-- RESERVIERUNG -->
 <section class="reserve-section">
   <div class="reserve-inner">
+    <a href="https://wa.me/436763979539" target="_blank" class="wa-mobile-banner" data-i18n-wa>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      <span class="wa-de">Direkt schreiben auf WhatsApp</span>
+      <span class="wa-en" style="display:none">Message us on WhatsApp</span>
+    </a>
     <div class="reveal">
       <div class="eyebrow" data-i18n="contact-eyebrow">Anfragen</div>
       <h2 class="section-title"><span data-i18n="contact-title">Ihr seid eine Gruppe?</span><br><span data-i18n="contact-subtitle">Es ist ein besonderer Morgen.</span></h2>
@@ -1596,7 +1635,6 @@ if(localStorage.getItem('cc'))document.getElementById('cookie').style.display='n
 // CATEGORY FILTER
 (function(){
   const btns = document.querySelectorAll('.cat-btn');
-  console.log('CAT FILTER INIT - buttons found:', btns.length);
   const cards = document.querySelectorAll('.drink-card');
   const bg = document.getElementById('cat-bg');
 
@@ -1641,7 +1679,6 @@ if(localStorage.getItem('cc'))document.getElementById('cookie').style.display='n
 </div>
 <script>
 function filterCat(btn) {
-  console.log('filterCat called:', btn.dataset.cat);
   document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
   const cat = btn.dataset.cat;
@@ -1955,6 +1992,11 @@ function setLang(lang) {
       el.textContent = translations[lang][key];
     }
   });
+  // WhatsApp banner language
+  const waDE = document.querySelectorAll('.wa-de');
+  const waEN = document.querySelectorAll('.wa-en');
+  waDE.forEach(el => el.style.display = lang === 'de' ? 'inline' : 'none');
+  waEN.forEach(el => el.style.display = lang === 'en' ? 'inline' : 'none');
   // Language-specific hero lines
   document.querySelectorAll('[data-lang-de]').forEach(el => {
     el.style.display = lang === 'de' ? 'block' : 'none';
