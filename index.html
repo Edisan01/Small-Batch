@@ -1,0 +1,1993 @@
+<!DOCTYPE html>
+<html lang="de" dir="ltr" style="font-size:16px;">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>small batch café Wien · Specialty Coffee Leopoldstadt</title>
+<link rel="canonical" href="https://smallbatch.cafe">
+<meta name="description" content="Specialty Coffee Café in Wien Leopoldstadt. Eigene Röstung, Direktbezug aus Zentralamerika. Haidgasse 10/2, 1020 Wien.">
+<meta property="og:title" content="small batch café Wien">
+<meta property="og:description" content="Specialty Coffee · Eigene Röstung · Haidgasse 10/2, 1020 Wien">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+[{"@context":"https://schema.org","@type":"CafeOrCoffeeShop","name":"small batch café","address":{"@type":"PostalAddress","streetAddress":"Haidgasse 10/2","addressLocality":"Wien","postalCode":"1020","addressCountry":"AT"},"openingHours":["We-Fr 08:00-15:30","Sa-Su 09:00-15:00"],"servesCuisine":"Specialty Coffee","hasMenu":"Specialty Coffee, Hausgemachte Kuchen, Kaffeebohnen zum Mitnehmen","priceRange":"€€"}
+</script>
+<style>
+:root{
+  --cream:#f7f4ef;
+  --dark:#111010;
+  --teal:#5bbfaa;
+  --stone:#c4b9a8;
+  --open:#4caf50;
+  --closed:#e53935;
+  --warn:#ff9800;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:auto}
+body{
+  background:var(--cream);color:var(--dark);
+  font-family:'DM Sans',sans-serif;font-weight:300;
+  overflow-x:hidden;cursor:none;
+}
+
+
+/* ── HERO IMPROVEMENTS ── */
+.hero-bg img{
+  transform:scale(1.06);
+  transition:transform 8s ease-out;
+}
+.hero-bg img.ken-burns{
+  transform:scale(1.0);
+}
+
+/* Hero headline lines animate in */
+.hero-big-text .line{
+  display:block;
+  transform:translateY(110%);
+  animation:slideUp 0.9s cubic-bezier(0.16,1,0.3,1) forwards;
+}
+
+@keyframes lineIn{
+  to{transform:translateY(0) skewY(0);opacity:1;filter:blur(0);}
+}
+
+/* Hero meta + CTAs */
+.hero-meta{opacity:0;animation:fadeIn 1s 0.6s forwards;}
+.hero-cta-wrap{opacity:0;animation:fadeIn 1s 0.8s forwards;}
+
+/* Button depth */
+.hero-btn-outline{
+  backdrop-filter:blur(12px);
+  background:rgba(248,246,242,0.08);
+  box-shadow:0 2px 16px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.1);
+  transition:all 0.3s ease;
+}
+.hero-btn-outline:hover{
+  background:rgba(248,246,242,0.15);
+  transform:translateY(-2px);
+  box-shadow:0 6px 24px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.15);
+}
+.hero-btn-fill{
+  box-shadow:0 4px 24px rgba(91,191,170,0.45), 0 2px 8px rgba(0,0,0,0.2);
+  transition:all 0.3s ease;
+}
+.hero-btn-fill:hover{
+  transform:translateY(-2px);
+  box-shadow:0 8px 32px rgba(91,191,170,0.55), 0 4px 12px rgba(0,0,0,0.25);
+}
+
+/* Hero strip depth */
+.hero-strip{
+  background:rgba(248,246,242,0.96);
+  backdrop-filter:blur(16px);
+  box-shadow:0 -4px 24px rgba(0,0,0,0.15);
+}
+.hero-strip-item strong{
+  color:var(--teal);
+}
+
+/* SCROLL indicator */
+.hero-scroll{
+  display:flex;flex-direction:column;align-items:center;gap:6px;
+}
+.hero-scroll-arrow{
+  width:20px;height:20px;
+  border-right:1.5px solid rgba(248,246,242,0.4);
+  border-bottom:1.5px solid rgba(248,246,242,0.4);
+  transform:rotate(45deg);
+  animation:arrowBounce 1.8s ease-in-out infinite;
+}
+.hero-scroll-arrow:nth-child(2){animation-delay:0.2s;opacity:0.5;}
+@keyframes arrowBounce{
+  0%,100%{transform:rotate(45deg) translateY(-4px);opacity:0.3;}
+  50%{transform:rotate(45deg) translateY(4px);opacity:1;}
+}
+
+
+/* ── ACCESSIBILITY ── */
+/* Skip to main content */
+#skip-link{
+  position:absolute;top:-100px;left:1rem;
+  background:var(--teal);color:#fff;
+  padding:0.5rem 1rem;font-size:0.75rem;
+  text-decoration:none;z-index:9999;
+  transition:top 0.2s;
+}
+#skip-link:focus{top:1rem;}
+
+/* Visible focus states */
+a:focus-visible, button:focus-visible{
+  outline:2px solid var(--teal);
+  outline-offset:3px;
+}
+a:focus:not(:focus-visible),
+button:focus:not(:focus-visible){
+  outline:none;
+}
+
+/* Better color contrast for small text */
+.karte-item-desc{color:#888;}
+.hours-table .day{color:#666;}
+
+/* ── GRAIN OVERLAY ── */
+body::before{
+  content:'';position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+  opacity:0.028;pointer-events:none;z-index:9999;
+}
+
+/* ── CUSTOM CURSOR ── */
+#cursor{
+  position:fixed;width:10px;height:10px;
+  background:var(--teal);border-radius:50%;
+  pointer-events:none;z-index:10000;
+  transform:translate(-50%,-50%);
+  transition:width 0.15s,height 0.15s;
+  mix-blend-mode:normal;
+}
+#cursor.big{width:40px;height:40px;background:var(--teal);opacity:0.2;}
+#cursor-ring{
+  position:fixed;width:36px;height:36px;
+  border:0.5px solid rgba(91,191,170,0.4);border-radius:50%;
+  pointer-events:none;z-index:9999;
+  transform:translate(-50%,-50%);
+  transition:transform 0.08s linear,width 0.2s,height 0.2s;
+}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:900;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:1.1rem 2.5rem;
+  transition:background 0.4s,backdrop-filter 0.4s;
+}
+nav.scrolled{
+  background:rgba(247,244,239,0.95);
+  backdrop-filter:blur(20px);
+  border-bottom:0.5px solid rgba(17,16,16,0.07);
+}
+.nav-logo{
+  font-family:'Caveat',cursive;
+  font-size:1.6rem;font-weight:500;
+  color:var(--cream);line-height:1;
+  transition:color 0.4s;
+}
+nav.scrolled .nav-logo{color:var(--dark);}
+.nav-logo span{
+  display:block;font-family:'DM Sans',sans-serif;font-weight:400;
+  font-size:0.42rem;letter-spacing:0.25em;text-transform:uppercase;
+  color:var(--teal);margin-top:2px;
+}
+.nav-center{display:flex;align-items:center;gap:8px;font-size:0.65rem;letter-spacing:0.08em;}
+.nav-center{color:rgba(247,244,239,0.8);transition:color 0.4s;}
+nav.scrolled .nav-center{color:#888;}
+.sdot{width:6px;height:6px;border-radius:50%;flex-shrink:0;}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{
+  font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;
+  text-decoration:none;color:rgba(247,244,239,0.6);transition:color 0.3s;
+}
+nav.scrolled .nav-links a{color:#767676;}
+.nav-links a:hover{color:var(--teal);}
+
+/* ── HERO ── */
+.hero{
+  height:100vh;position:relative;overflow:hidden;
+  display:flex;align-items:flex-end;
+}
+.hero-bg{
+  position:absolute;inset:0;
+}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:right center;transform:scale(1.05);transition:transform 8s ease;}
+.hero-bg::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(to right, rgba(10,8,6,0.85) 0%, rgba(10,8,6,0.65) 55%, rgba(10,8,6,0.2) 100%),
+             linear-gradient(to top, rgba(10,8,6,0.7) 0%, transparent 50%);
+}
+.hero-content{
+  position:relative;z-index:2;
+  padding:0 4rem 5rem;
+  width:100%;
+}
+.hero-big-text{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(3.5rem,8vw,7rem);
+  font-style:italic;font-weight:300;
+  line-height:0.95;color:#f7f4ef;
+  overflow:hidden;
+}
+.hero-big-text .line{
+  display:block;transform:translateY(110%);
+  animation:slideUp 0.9s cubic-bezier(0.16,1,0.3,1) forwards;
+}
+.hero-big-text .line:nth-child(2){animation-delay:0.1s;}
+.hero-big-text .line:nth-child(3){animation-delay:0.2s;}
+@keyframes slideUp{to{transform:translateY(0)}}
+.hero-meta{
+  display:flex;align-items:center;gap:3rem;
+  margin-top:2rem;
+  opacity:0;animation:fadeIn 1s 0.6s forwards;
+}
+@keyframes fadeIn{to{opacity:1}}
+.hero-meta-item{font-size:0.72rem;letter-spacing:0.1em;color:rgba(247,244,239,0.6);}
+.hero-meta-item strong{color:var(--teal);font-weight:400;}
+.hero-cta-wrap{display:flex;gap:1rem;margin-top:2.5rem;opacity:0;animation:fadeIn 1s 0.8s forwards;}
+.hero-btn{
+  display:inline-block;padding:0.85rem 2rem;
+  font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;
+  text-decoration:none;transition:all 0.3s;
+}
+.hero-btn-outline{border:0.5px solid rgba(247,244,239,0.4);color:#f7f4ef;}
+.hero-btn-outline:hover{border-color:var(--teal);color:var(--teal);}
+.hero-btn-fill{background:var(--teal);color:#fff;}
+.hero-btn-fill:hover{background:#4aad99;}
+.hero-scroll{
+  position:absolute;bottom:2rem;right:2.5rem;z-index:2;
+  font-size:0.58rem;letter-spacing:0.2em;text-transform:uppercase;
+  color:rgba(247,244,239,0.4);
+  display:flex;flex-direction:column;align-items:center;gap:0.5rem;
+  animation:fadeIn 1s 1.2s forwards;opacity:0;
+}
+.hero-scroll-line{
+  width:0.5px;height:40px;background:rgba(247,244,239,0.2);
+  transform-origin:top;animation:scrollLine 2s 1.5s infinite;
+}
+@keyframes scrollLine{0%{transform:scaleY(0);opacity:1}100%{transform:scaleY(1);opacity:0}}
+
+/* ── MARQUEE ── */
+.marquee-section{
+  overflow:hidden;border-top:0.5px solid rgba(17,16,16,0.08);
+  border-bottom:0.5px solid rgba(17,16,16,0.08);
+  padding:0.8rem 0;background:var(--cream);
+}
+.marquee-track{
+  display:flex;gap:0;
+  animation:marquee 20s linear infinite;
+  white-space:nowrap;
+}
+.marquee-item{
+  flex-shrink:0;padding:0 2rem;
+  font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;
+  color:#8a8078;display:flex;align-items:center;gap:2rem;
+}
+.marquee-dot{width:4px;height:4px;border-radius:50%;background:var(--teal);flex-shrink:0;}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ── REVEAL ANIMATIONS ── */
+.reveal{
+  opacity:0;transform:translateY(40px);
+  transition:opacity 0.8s cubic-bezier(0.16,1,0.3,1),transform 0.8s cubic-bezier(0.16,1,0.3,1);
+}
+.reveal.visible{opacity:1;transform:translateY(0);}
+.reveal-delay-1{transition-delay:0.1s;}
+.reveal-delay-2{transition-delay:0.2s;}
+.reveal-delay-3{transition-delay:0.3s;}
+
+/* ── WEEK SECTION ── */
+.week-section{padding:5rem 4rem;border-bottom:0.5px solid rgba(17,16,16,0.06);}
+.week-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:2rem;}
+.eyebrow{font-size:0.58rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--teal);margin-bottom:0.6rem;}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3vw,2.4rem);font-weight:400;line-height:1.15;}
+.hafermilch{
+  font-size:0.58rem;letter-spacing:0.14em;text-transform:uppercase;
+  border:0.5px solid var(--teal);color:var(--teal);padding:0.3rem 0.8rem;
+}
+.week-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(17,16,16,0.06);}
+.week-card{background:var(--cream);padding:1.2rem 1rem;transition:background 0.3s;}
+.week-card:hover{background:#f0ebe3;}
+.week-tag{
+  font-size:0.52rem;letter-spacing:0.15em;text-transform:uppercase;
+  border:0.5px solid var(--teal);color:var(--teal);
+  display:inline-block;padding:0.18rem 0.5rem;margin-bottom:0.7rem;
+}
+.week-name{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-style:italic;margin-bottom:0.3rem;}
+.week-desc{font-size:0.72rem;color:#767676;line-height:1.6;}
+
+/* ── DRINKS HORIZONTAL ── */
+.drinks-section{padding:5rem 0;border-bottom:0.5px solid rgba(17,16,16,0.06);overflow:hidden;position:relative;}
+.drinks-header{padding:0 4rem;margin-bottom:2rem;display:flex;justify-content:space-between;align-items:flex-end;}
+.drinks-scroll{
+  display:flex;gap:1px;
+  overflow-x:auto;padding:0 4rem 1rem;
+  scrollbar-width:none;cursor:grab;
+}
+.drinks-scroll::-webkit-scrollbar{display:none;}
+.drinks-scroll:active{cursor:grabbing;}
+.drink-card{
+  flex-shrink:0;width:220px;
+  background:#f0ebe3;padding:1.5rem 1.2rem;
+  transition:background 0.3s,transform 0.3s;
+}
+.drink-card:hover{background:#e8e2d8;transform:translateY(-3px);}
+.drink-name{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-style:italic;margin-bottom:0.3rem;}
+.drink-desc{font-size:0.72rem;color:#767676;line-height:1.6;margin-bottom:0.8rem;}
+.drink-price{font-size:0.75rem;color:var(--teal);}
+.drink-scroll-hint{padding:0 4rem;margin-top:0.5rem;font-size:0.58rem;letter-spacing:0.15em;text-transform:uppercase;color:#8a8078;}
+
+/* ── HERKUNFT ── */
+.herkunft-section{
+  padding:5rem 4rem;background:#111010;
+  border-bottom:0.5px solid rgba(247,244,239,0.06);
+  transform:translateZ(0);
+}
+.herkunft-inner{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;}
+.herkunft-text .eyebrow{color:#6ecfbb;}
+.herkunft-text .section-title{color:#f7f4ef;margin-bottom:1.5rem;}
+.herkunft-text p{font-size:0.88rem;line-height:1.9;color:#666;max-width:380px;}
+.herkunft-text em{font-style:italic;color:#f7f4ef;}
+.herkunft-countries{display:flex;flex-direction:column;gap:0;margin-top:0;}
+.country-item{
+  display:flex;align-items:center;gap:1.5rem;
+  padding:1.2rem 0;
+  border-bottom:0.5px solid rgba(247,244,239,0.06);
+  cursor:pointer;transition:all 0.3s;
+  position:relative;overflow:hidden;
+}
+.country-item::before{
+  content:'';position:absolute;left:0;top:0;bottom:0;width:0;
+  background:rgba(91,191,170,0.08);transition:width 0.4s cubic-bezier(0.16,1,0.3,1);
+}
+.country-item:hover::before{width:100%;}
+.country-num{
+  font-family:'Cormorant Garamond',serif;font-size:0.8rem;
+  color:rgba(247,244,239,0.2);font-style:italic;width:24px;flex-shrink:0;
+}
+.country-name{font-size:1.1rem;color:#f7f4ef;font-weight:300;flex:1;}
+.country-note{font-size:0.7rem;color:#555;font-style:italic;}
+.country-arrow{font-size:0.8rem;color:var(--teal);opacity:0;transition:opacity 0.3s,transform 0.3s;transform:translateX(-8px);}
+.country-item:hover .country-arrow{opacity:1;transform:translateX(0);}
+
+/* ── QUOTE ── */
+.quote-section{
+  position:relative;
+  min-height:80vh;
+  display:flex;align-items:center;
+  overflow:hidden;
+  background:var(--cream);
+  padding:12vh 8vw;
+}
+/* Soft transition from dark herkunft section */
+.quote-section::before{
+  content:'';
+  position:absolute;top:0;left:0;right:0;height:100px;
+  background:linear-gradient(to bottom, #111010, var(--cream));
+  z-index:0;
+}
+/* Subtle window photo bg */
+.quote-bg-img{
+  position:absolute;inset:0;
+  background-image:url('bilder/quote-bg.jpg');
+  background-size:cover;
+  background-position:center;
+  opacity:0.05;
+}
+.quote-bg-color{display:none;}
+.quote-content{
+  position:relative;z-index:2;
+  max-width:900px;
+}
+/* Line 1 - barely visible */
+.quote-line1{
+  font-family:'DM Sans',sans-serif;
+  font-size:0.72rem;
+  letter-spacing:0.25em;
+  text-transform:uppercase;
+  color:rgba(26,26,26,0.45);
+  margin-bottom:0.3rem;
+  transform:translateX(-30px);
+  opacity:0;
+  transition:transform 0.7s cubic-bezier(0.16,1,0.3,1), opacity 0.7s ease;
+}
+/* Line 2 - medium */
+.quote-line2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.4rem,2.5vw,2rem);
+  font-style:italic;
+  font-weight:300;
+  color:rgba(26,26,26,0.65);
+  margin-bottom:0.2rem;
+  opacity:0;
+  transition:opacity 0.7s ease 0.15s;
+}
+/* Line 3 - DOMINANT */
+.quote-line3{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(4rem,10vw,8rem);
+  font-style:italic;
+  font-weight:500;
+  color:var(--teal);
+  line-height:0.95;
+  margin-bottom:3rem;
+  transform:translateX(40px);
+  opacity:0;
+  transition:transform 0.8s cubic-bezier(0.16,1,0.3,1) 0.3s, opacity 0.8s ease 0.3s;
+  position:relative;
+  overflow:hidden;
+}
+/* Shine effect on line 3 */
+.quote-line3::after{
+  content:'';
+  position:absolute;
+  top:0;left:-100%;
+  width:60%;height:100%;
+  background:linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+  transform:skewX(-20deg);
+  animation:none;
+}
+.quote-line3.shining::after{
+  animation:shine 1.2s ease-out 0.5s forwards;
+}
+@keyframes shine{
+  0%{left:-100%}
+  100%{left:200%}
+}
+.quote-stars{
+  display:flex;gap:6px;margin-bottom:0.8rem;
+  opacity:0;transition:opacity 0.5s ease 0.6s;
+}
+.quote-star{
+  color:var(--teal);font-size:1.1rem;
+  opacity:0;
+  transition:opacity 0.2s ease;
+}
+.quote-source{
+  font-size:0.62rem;
+  letter-spacing:0.2em;
+  text-transform:uppercase;
+  color:rgba(26,26,26,0.55);
+  opacity:0;
+  transition:opacity 0.5s ease 0.8s;
+}
+.quote-cta{
+  margin-top:2rem;
+  font-size:0.75rem;
+  color:var(--teal);
+  letter-spacing:0.1em;
+  opacity:0;
+  transition:opacity 0.5s ease 1s;
+}
+/* Visible state */
+.quote-section.in-view .quote-line1{transform:translateX(0);opacity:1;}
+.quote-section.in-view .quote-line2{opacity:1;}
+.quote-section.in-view .quote-line3{transform:translateX(0);opacity:1;}
+.quote-section.in-view .quote-stars{opacity:1;}
+.quote-section.in-view .quote-source{opacity:1;}
+.quote-section.in-view .quote-cta{opacity:1;}
+
+/* ── FOUNDERS ── */
+.founders-section{
+  display:grid;grid-template-columns:1fr 1fr;
+  min-height:600px;
+  transform:translateZ(0);
+}
+.founders-img{
+  background:#f0ebe3;
+  display:flex;align-items:center;justify-content:center;
+  padding:3rem;
+}
+.founders-img img{
+  width:100%;max-width:340px;height:auto;
+  border-radius:16px;
+  box-shadow:0 8px 30px rgba(0,0,0,0.25);
+  object-fit:contain;
+}
+.founders-gradient{display:none;}
+.founders-text{
+  padding:4rem 3.5rem;
+  display:flex;flex-direction:column;justify-content:center;
+  background:#f0ebe3;
+}
+.founders-text .eyebrow{margin-bottom:1rem;}
+.founders-headline{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.8rem,3vw,2.6rem);
+  font-style:italic;font-weight:300;
+  color:var(--dark);line-height:1.2;
+  margin-bottom:1.5rem;
+}
+.founders-letter{
+  font-size:0.88rem;line-height:1.9;
+  color:#666;font-weight:300;max-width:480px;
+}
+.founders-sig{
+  font-family:'Caveat',cursive;
+  font-size:2rem;color:var(--teal);
+  margin-top:2rem;font-weight:500;
+}
+
+/* ── INSTAGRAM ── */
+.ig-section{padding:5rem 4rem;border-top:0.5px solid rgba(17,16,16,0.06);}
+.ig-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:1.5rem;}
+.ig-cta{font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--teal);text-decoration:none;border-bottom:0.5px solid var(--teal);padding-bottom:2px;}
+.ig-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  grid-template-rows:repeat(2,240px);gap:1px;
+  background:rgba(17,16,16,0.06);
+}
+.ig-item{overflow:hidden;position:relative;cursor:pointer;}
+.ig-item img{width:100%;height:100%;object-fit:cover;transition:transform 0.5s cubic-bezier(0.16,1,0.3,1);}
+.ig-item:hover img{transform:scale(1.06);}
+.ig-overlay{
+  position:absolute;inset:0;background:rgba(17,16,16,0);
+  display:flex;align-items:center;justify-content:center;
+  transition:background 0.3s;
+}
+.ig-item:hover .ig-overlay{background:rgba(17,16,16,0.4);}
+.ig-handle{color:#fff;font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;opacity:0;transition:opacity 0.3s;}
+.ig-item:hover .ig-handle{opacity:1;}
+
+/* ── HOURS ── */
+.hours-section{display:grid;grid-template-columns:1fr 1fr;}
+.hours-left{padding:5rem 4rem;border-right:0.5px solid rgba(17,16,16,0.06);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:left;}
+.hours-right{padding:5rem 4rem;}
+.hours-table{width:auto;min-width:320px;border-collapse:collapse;margin-top:2rem;margin-left:auto;margin-right:auto;}
+.hours-table tr{border-bottom:0.5px solid rgba(17,16,16,0.05);}
+.hours-table td{padding:1.1rem 0;font-size:0.84rem;}
+.hours-table .day{color:#999;font-weight:300;font-size:0.78rem;letter-spacing:0.04em;width:140px;}
+.hours-table td:last-child{font-size:0.95rem;font-weight:400;color:#1a1a1a;}
+.hours-table .ruhetag{color:#bbb;font-style:italic;font-size:0.78rem;font-weight:300;}
+.hours-today .day{color:var(--teal);font-weight:400;}
+.hours-today td:last-child{color:var(--teal);}
+.hours-address{margin-top:3rem;padding-top:2rem;border-top:0.5px solid rgba(17,16,16,0.08);font-size:0.8rem;line-height:2.2;color:#767676;font-weight:300;text-align:center;}
+.map-wrap{
+  width:100%;height:320px;
+  border:0.5px solid rgba(17,16,16,0.08);
+  margin-top:1.5rem;overflow:hidden;
+}
+.map-wrap iframe{width:100%;height:100%;border:none;}
+
+/* ── RESERVE ── */
+.reserve-section{
+  padding:5rem 4rem;background:#111010;
+  border-top:0.5px solid rgba(247,244,239,0.04);
+}
+.reserve-inner{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;}
+.reserve-section .eyebrow{color:var(--teal);}
+.reserve-section .section-title{color:#f7f4ef;margin-bottom:1.5rem;}
+.reserve-section p{font-size:0.85rem;line-height:1.9;color:#555;}
+.form{display:flex;flex-direction:column;gap:1.2rem;margin-top:0;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.form-field{display:flex;flex-direction:column;gap:0.4rem;}
+.form-label{font-size:0.58rem;letter-spacing:0.2em;text-transform:uppercase;color:#444;}
+.form-input,.form-textarea{
+  background:transparent;border:none;
+  border-bottom:0.5px solid rgba(247,244,239,0.15);
+  padding:0.6rem 0;font-size:0.84rem;
+  font-family:'DM Sans',sans-serif;font-weight:300;
+  color:#f7f4ef;outline:none;transition:border-color 0.2s;width:100%;
+}
+.form-input:focus,.form-textarea:focus{border-color:var(--teal);}
+.form-input::placeholder,.form-textarea::placeholder{color:#333;}
+.form-textarea{resize:none;height:80px;}
+.form-submit{
+  align-self:flex-start;padding:0.85rem 2rem;
+  background:var(--teal);color:#fff;
+  font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;
+  border:none;cursor:none;font-family:'DM Sans',sans-serif;
+  transition:background 0.2s;
+}
+.form-submit:hover{background:#4aad99;}
+.form-note{font-size:0.68rem;color:#333;font-style:italic;margin-top:-0.5rem;}
+
+/* ── FOOTER ── */
+footer{
+  background:var(--dark);color:rgba(247,244,239,0.6);
+  padding:3.5rem 4rem;
+  display:grid;grid-template-columns:1fr 1fr 1fr;gap:3rem;
+}
+.footer-logo{font-family:'Caveat',cursive;font-size:1.8rem;color:#f7f4ef;font-weight:500;}
+.footer-tagline{font-size:0.58rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--teal);margin:0.3rem 0 1.5rem;}
+.footer-hours{font-size:0.75rem;line-height:2;color:#444;}
+.footer-col-title{font-size:0.56rem;letter-spacing:0.25em;text-transform:uppercase;color:#333;margin-bottom:1rem;}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:0.5rem;}
+.footer-links a{font-size:0.75rem;color:#888;text-decoration:none;transition:color 0.2s;}
+.footer-links a:hover{color:var(--teal);}
+.footer-legal{
+  grid-column:1/-1;border-top:0.5px solid rgba(247,244,239,0.05);
+  padding-top:1.5rem;margin-top:0.5rem;
+  font-size:0.6rem;color:#333;letter-spacing:0.06em;
+}
+
+
+.review-btn{
+  display:inline-flex;align-items:center;gap:0.6rem;
+  padding:0.8rem 1.5rem;
+  background:#fff;
+  border:0.5px solid rgba(26,26,26,0.12);
+  font-size:0.72rem;letter-spacing:0.1em;
+  text-decoration:none;color:var(--dark);
+  box-shadow:0 2px 12px rgba(0,0,0,0.08);
+  transition:all 0.2s;
+  font-family:'DM Sans',sans-serif;
+}
+.review-btn:hover{
+  box-shadow:0 4px 20px rgba(0,0,0,0.14);
+  transform:translateY(-1px);
+}
+.review-btn svg{flex-shrink:0;}
+
+
+#whatsapp-btn{
+  position:fixed;
+  bottom:24px;left:18px;
+  width:52px;height:52px;
+  background:#25D366;
+  border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  z-index:600;
+  box-shadow:0 4px 20px rgba(37,211,102,0.45),0 2px 8px rgba(0,0,0,0.2);
+  transition:transform 0.2s,box-shadow 0.2s;
+  text-decoration:none;
+}
+#whatsapp-btn:hover{
+  transform:translateY(-3px) scale(1.05);
+  box-shadow:0 8px 28px rgba(37,211,102,0.55),0 4px 12px rgba(0,0,0,0.25);
+}
+
+/* ── COOKIE ── */
+#cookie{
+  position:fixed;bottom:1.5rem;left:1.5rem;right:1.5rem;
+  background:#111010;color:rgba(247,244,239,0.7);
+  display:flex;align-items:center;justify-content:space-between;gap:2rem;
+  padding:1.2rem 1.8rem;z-index:8000;
+  border:0.5px solid rgba(247,244,239,0.06);
+}
+.cookie-text{font-size:0.7rem;line-height:1.6;flex:1;}
+.cookie-btns{display:flex;gap:0.8rem;flex-shrink:0;}
+.cbtn{padding:0.5rem 1.2rem;font-size:0.58rem;letter-spacing:0.14em;text-transform:uppercase;cursor:none;border:none;font-family:'DM Sans',sans-serif;}
+.cbtn-yes{background:var(--cream);color:var(--dark);}
+.cbtn-no{background:transparent;color:#444;border:0.5px solid #222;}
+
+/* ── MODALS ── */
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:7000;align-items:center;justify-content:center;}
+.modal.open{display:flex;}
+.modal-box{background:var(--cream);padding:3rem;max-width:520px;width:90%;max-height:80vh;overflow-y:auto;position:relative;}
+.modal-close{position:absolute;top:1rem;right:1.2rem;background:none;border:none;font-size:1.1rem;cursor:none;color:#888;}
+.modal-title{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:400;margin-bottom:1.5rem;}
+.modal-body{font-size:0.8rem;line-height:2;color:#666;font-weight:300;}
+.modal-body a{color:var(--teal);}
+
+
+/* ── SOFT SECTION TRANSITIONS ── */
+section, .week-section, .drinks-section, .herkunft-section,
+.quote-section, .founders-section, .ig-section, 
+.hours-section, .reserve-section, .marquee-section {
+  position:relative;
+}
+/* Wave dividers between sections */
+.wave-divider {
+  position:absolute;
+  bottom:-1px;left:0;right:0;
+  height:60px;overflow:hidden;
+  z-index:2;
+  pointer-events:none;
+}
+.wave-divider svg {
+  width:100%;height:100%;
+}
+/* Fade transitions */
+section + section,
+.week-section + section,
+.founders-section + section {
+  margin-top:0;
+}
+/* Gradient blends between light/dark sections */
+.herkunft-section::before {
+  content:'';position:absolute;top:0;left:0;right:0;height:60px;
+  background:linear-gradient(to bottom, var(--cream), #111010);
+  z-index:1;
+}
+
+
+/* ── HIGH CONTRAST MODE ── */
+@media (prefers-contrast: high) {
+  :root {
+    --cream: #ffffff;
+    --dark: #000000;
+    --teal: #007a66;
+    --stone: #555555;
+  }
+  .hero-overlay {
+    background: rgba(0,0,0,0.85) !important;
+  }
+}
+
+/* ── REDUCED MOTION ── */
+@media (prefers-reduced-data: reduce) {
+  
+  .marquee-track{animation:none !important;}
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .hero-bg img { transform: none !important; }
+  .marquee-track { animation: none !important; }
+  #bean-wrap { display: none !important; }
+}
+
+/* ── MOBILE ── */
+
+/* ── MOBILE OVERHAUL ── */
+@media(max-width:768px){
+  /* Hide desktop cursor */
+  body{cursor:auto;}
+  #cursor,#cursor-ring{display:none;}
+
+  /* NAV */
+  nav{padding:0.9rem 1.2rem;}
+  .nav-links{display:none;}
+  .nav-logo{font-size:1.4rem;}
+  .nav-center{font-size:0.58rem;gap:5px;}
+
+  /* HERO */
+  .hero-content{padding:0 1.2rem 2rem;}
+  .hero-big-text{font-size:clamp(2.4rem,9vw,3.5rem);}
+  .hero-meta{
+    flex-direction:column;gap:0.4rem;
+    font-size:0.65rem;
+  }
+  .hero-cta-wrap{flex-direction:column;gap:0.6rem;width:100%;}
+  .hero-btn{width:100%;text-align:center;padding:1rem;}
+  .hero-scroll{display:none;}
+
+  /* MARQUEE */
+  .marquee-item{font-size:0.6rem;padding:0 1rem;}
+
+  /* WEEK */
+  .week-section{padding:3rem 1.2rem;}
+  .week-header{flex-direction:column;gap:1rem;align-items:flex-start;}
+  .week-grid{grid-template-columns:1fr 1fr;gap:1px;}
+  .week-card{padding:1rem 0.8rem;}
+  .week-name{font-size:1rem;}
+
+  /* DRINKS */
+  .drinks-section{padding:3rem 0;}
+  .drinks-header{padding:0 1.2rem;margin-bottom:1.5rem;}
+  .drinks-scroll{padding:0 1.2rem 1rem;gap:0.8rem;}
+  .drink-card{width:180px;padding:1.2rem 1rem;}
+  .drink-scroll-hint{padding:0 1.2rem;}
+
+  /* HERKUNFT */
+  .herkunft-section{padding:3.5rem 1.2rem;}
+  .herkunft-inner{grid-template-columns:1fr;gap:2.5rem;}
+  .herkunft-text .section-title{font-size:1.8rem;}
+  .country-name{font-size:1rem;}
+
+  /* QUOTE */
+  .quote-section{padding:5rem 1.2rem;min-height:auto;}
+  .quote-line3{font-size:clamp(3rem,14vw,5rem);}
+  .quote-line2{font-size:1.2rem;}
+
+  /* FOUNDERS */
+  .founders-section{grid-template-columns:1fr;}
+  .founders-img{padding:1.5rem 1.2rem;}
+  .founders-img img{max-width:100%;}
+  .founders-text{padding:2rem 1.2rem;}
+  .founders-headline{font-size:1.6rem;}
+  .founders-letter{font-size:0.85rem;}
+
+  /* INSTAGRAM */
+  .ig-section{padding:3rem 1.2rem;}
+  .ig-grid{
+    grid-template-columns:repeat(2,1fr);
+    grid-template-rows:repeat(3,150px);
+  }
+
+  /* HOURS */
+  .hours-section{grid-template-columns:1fr;}
+  .hours-left,.hours-right{padding:3rem 2.5rem;}
+  .hours-table td{font-size:0.8rem;padding:0.7rem 0;}
+  .map-wrap{height:220px;}
+
+  /* RESERVE */
+  .reserve-section{padding:3rem 1.2rem;}
+  .reserve-inner{grid-template-columns:1fr;gap:2rem;}
+  .form-row{grid-template-columns:1fr;}
+  .form-submit{width:100%;text-align:center;}
+
+  /* REVIEW */
+  .review-section{padding:3rem 1.2rem;text-align:left;}
+
+  /* FOOTER */
+  footer{grid-template-columns:1fr;padding:2rem 1.2rem;gap:1.5rem;}
+  .footer-legal{font-size:0.55rem;}
+
+  /* BEAN */
+  
+
+  /* CUP */
+  
+
+  /* WHATSAPP */
+  #whatsapp-btn{
+    width:46px;height:46px;
+    bottom:20px;left:14px;
+  }
+
+  /* COOKIE */
+  #cookie{
+    flex-direction:column;
+    align-items:flex-start;
+    padding:1rem 1.2rem;
+    gap:0.8rem;
+  }
+  .cookie-text{font-size:0.65rem;}
+
+  /* MODALS */
+  .modal-box{padding:2rem 1.2rem;margin:1rem;}
+
+  /* STICKY CTA BAR for mobile */
+  #mobile-cta{
+    position:fixed;
+    bottom:0;left:0;right:0;
+    background:var(--dark);
+    display:flex;z-index:700;
+    border-top:0.5px solid rgba(255,255,255,0.08);
+  }
+  #mobile-cta a{
+    flex:1;text-align:center;
+    padding:0.9rem 0.5rem;
+    font-size:0.58rem;letter-spacing:0.12em;
+    text-transform:uppercase;
+    text-decoration:none;
+    color:rgba(247,244,239,0.7);
+    display:flex;flex-direction:column;
+    align-items:center;gap:3px;
+    border-right:0.5px solid rgba(255,255,255,0.06);
+  }
+  #mobile-cta a:last-child{border-right:none;}
+  #mobile-cta a svg{opacity:0.6;}
+  #mobile-cta a.highlight{color:var(--teal);}
+  #mobile-cta a.highlight svg{opacity:1;}
+}
+
+@media(min-width:769px){
+  #mobile-cta{display:none;}
+}
+
+
+
+/* ── MICRO-INTERACTIONS ── */
+.hero-btn:active,.btn-fill:active,.btn-outline:active{
+  transform:scale(0.97) !important;
+  opacity:0.9;
+}
+.drink-card:active{transform:scale(0.98);}
+.country-item:active{background:rgba(91,191,170,0.12);}
+.week-card:active{background:#e8e2d8;}
+.ig-item:active img{transform:scale(1.02);}
+button:active{transform:scale(0.97);}
+#mobile-cta a:active{background:rgba(247,244,239,0.08);}
+
+
+/* ── DARK MODE ── */
+
+
+/* ── MOBILE SPECIFIC FIXES ── */
+@media(max-width:768px){
+  /* Hide bean animation - performance */
+  
+
+  /* Grain off on mobile */
+  body::before{
+  content:'';position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+  opacity:0.028;pointer-events:none;z-index:9999;
+}
+
+  /* Hero mobile - more direct */
+  .hero{min-height:100svh;}
+  .hero-big-text{font-size:clamp(2rem,8vw,2.8rem) !important;}
+  .hero-meta{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:0.5rem 1rem;
+  }
+  .hero-meta-item{font-size:0.6rem;}
+
+  /* Instagram 2x2 on mobile */
+  .ig-grid{
+    grid-template-columns:repeat(2,1fr) !important;
+    grid-template-rows:repeat(2,180px) !important;
+  }
+  /* Hide last 2 items */
+  .ig-item:nth-child(5),
+  .ig-item:nth-child(6){display:none;}
+
+  /* Quote padding fix */
+  .quote-section{padding:4rem 1.2rem !important;}
+  .quote-line3{font-size:clamp(2.8rem,13vw,4.5rem) !important;}
+
+  /* Footer needs padding for sticky CTA */
+  footer{padding-bottom:5rem !important;}
+
+  /* Sticky CTA bar bigger touch targets */
+  #mobile-cta{
+    height:56px;
+  }
+  #mobile-cta a{
+    min-height:56px;
+    font-size:0.55rem;
+    padding:0.6rem 0.3rem;
+    gap:4px;
+  }
+
+  /* Scroll to top button */
+  #scroll-top{
+    position:fixed;
+    bottom:70px;right:14px;
+    width:38px;height:38px;
+    background:var(--dark);
+    border:0.5px solid rgba(247,244,239,0.15);
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    z-index:600;
+    opacity:0;
+    transition:opacity 0.3s;
+    cursor:pointer;
+    pointer-events:none;
+  }
+  #scroll-top.visible{opacity:1;pointer-events:auto;}
+
+  /* Cup smaller, no overlap with CTA */
+  
+}
+
+@media(min-width:769px){
+  #scroll-top{display:none;}
+}
+
+/* ── CATEGORY FILTERS ── */
+.cat-filters{
+  display:flex;gap:0.5rem;padding:0 4rem 1.5rem;
+  flex-wrap:wrap;position:relative;z-index:2;
+}
+.cat-btn{
+  font-family:'DM Sans',sans-serif;font-size:0.62rem;
+  letter-spacing:0.12em;text-transform:uppercase;
+  border:0.5px solid rgba(17,16,16,0.15);
+  background:transparent;color:#5a5048;
+  padding:0.45rem 1rem;cursor:pointer;
+  transition:all 0.25s ease;
+}
+.cat-btn:hover{border-color:var(--teal);color:var(--teal);}
+.cat-btn.active{background:var(--teal);color:#fff;border-color:var(--teal);}
+.cat-bg{
+  position:absolute;inset:0;z-index:0;
+  background-size:cover;background-position:center;
+  opacity:0;transition:opacity 0.5s ease;
+  pointer-events:none;
+}
+.cat-bg.visible{opacity:0.15;}
+.drink-card--signature{
+  border:0.5px solid var(--teal) !important;
+}
+.drink-card--bags{
+  border:0.5px solid #8a6a3a !important;
+}
+.drink-badge{
+  font-size:0.52rem;letter-spacing:0.14em;text-transform:uppercase;
+  color:var(--teal);margin-bottom:0.4rem;
+}
+.drink-card--bags .drink-badge{color:#8a6a3a;}
+.drink-card.hidden{display:none;}
+@media(max-width:768px){
+  .cat-filters{padding:0 1.2rem 1.2rem;gap:0.4rem;}
+  .cat-btn{font-size:0.58rem;padding:0.4rem 0.8rem;}
+}
+
+
+
+.drink-card[data-img]{cursor:pointer;}
+.drink-card[data-img]:hover .drink-name{color:var(--teal);}
+
+/* ── CATEGORY FILTERS ── */
+.cat-filters{
+  display:flex;gap:0.5rem;padding:0 4rem 1.5rem;
+  flex-wrap:wrap;position:relative;z-index:2;
+}
+.cat-btn{
+  font-family:'DM Sans',sans-serif;font-size:0.62rem;
+  letter-spacing:0.12em;text-transform:uppercase;
+  border:0.5px solid rgba(17,16,16,0.15);
+  background:transparent;color:#5a5048;
+  padding:0.45rem 1rem;cursor:pointer;
+  transition:all 0.25s ease;
+}
+.cat-btn:hover{border-color:var(--teal);color:var(--teal);}
+.cat-btn.active{background:var(--teal);color:#fff;border-color:var(--teal);}
+.cat-bg{
+  position:absolute;inset:0;z-index:0;
+  background-size:cover;background-position:center;
+  opacity:0;transition:opacity 0.5s ease;
+  pointer-events:none;
+}
+.cat-bg.visible{opacity:0.15;}
+.drink-card--signature{
+  border:0.5px solid var(--teal) !important;
+}
+.drink-card--bags{
+  border:0.5px solid #8a6a3a !important;
+}
+.drink-badge{
+  font-size:0.52rem;letter-spacing:0.14em;text-transform:uppercase;
+  color:var(--teal);margin-bottom:0.4rem;
+}
+.drink-card--bags .drink-badge{color:#8a6a3a;}
+.drink-card.hidden{display:none;}
+@media(max-width:768px){
+  .cat-filters{padding:0 1.2rem 1.2rem;gap:0.4rem;}
+  .cat-btn{font-size:0.58rem;padding:0.4rem 0.8rem;}
+}
+
+
+
+.drink-card[data-img]{cursor:pointer;}
+.drink-card[data-img]:hover .drink-name{color:var(--teal);}
+
+
+
+/* SPLASH - always visible crown above cup */
+@keyframes splashFloat {
+  0%,100% { transform:translateX(-50%) translateY(0px) scaleY(1); opacity:0.9; }
+  50%      { transform:translateX(-50%) translateY(-5px) scaleY(1.04); opacity:1; }
+}
+#splash-el {
+  animation: splashFloat 3s ease-in-out infinite !important;
+  opacity:0.9 !important;
+}
+
+.lang-switch { display:flex; align-items:center; gap:6px; }
+.lang-btn {
+  background:none; border:none; cursor:pointer;
+  font-family:'DM Sans',sans-serif; font-size:0.75rem;
+  letter-spacing:0.1em; color:rgba(247,244,239,0.5);
+  padding:4px 2px; transition:color 0.2s;
+}
+.lang-btn:hover { color:rgba(247,244,239,0.9); }
+.lang-btn.active { color:#5bbfaa; font-weight:600; }
+nav.scrolled .lang-btn { color:rgba(17,16,14,0.4); }
+nav.scrolled .lang-btn:hover { color:var(--dark); }
+nav.scrolled .lang-btn.active { color:#5bbfaa; }
+nav.scrolled .lang-switch span { color:rgba(17,16,14,0.2) !important; }
+</style>
+<noscript><style>
+  .reveal{opacity:1 !important;transform:none !important;}
+  #intro{display:none !important;}
+  .hero-big-text .line{transform:none !important;opacity:1 !important;animation:none !important;}
+  .hero-meta,.hero-cta-wrap{opacity:1 !important;transform:none !important;}
+</style></noscript>
+</head>
+<body>
+
+<a id="skip-link" href="#kaffee">Zum Inhalt springen</a>
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+
+</div>
+
+<!-- NAV -->
+<nav id="nav" aria-label="Hauptnavigation">
+  <div class="nav-logo">small batch<span>café</span></div>
+  <div class="nav-center">
+    <div class="sdot" id="sdot"></div>
+    <span id="stext"></span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#kaffee" data-i18n="nav-kaffee">Kaffee</a></li>
+    <li><a href="#ueber" data-i18n="nav-ueber">Über uns</a></li>
+    <li><a href="#hours" data-i18n="nav-hours">Öffnungszeiten</a></li>
+  </ul>
+  <div class="lang-switch">
+    <button onclick="setLang('de')" id="btn-de" class="lang-btn active">DE</button>
+    <span style="color:rgba(247,244,239,0.3)">|</span>
+    <button onclick="setLang('en')" id="btn-en" class="lang-btn">EN</button>
+  </div>
+</nav>
+
+<main id="main-content">
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg">
+    <img src="bilder/hero.jpg" alt="small batch café Wien Bogenfenster mit gezeichnetem Logo" style="width:100%;height:100%;object-fit:cover;" loading="lazy">
+  </div>
+  <div class="hero-content">
+    <div class="hero-big-text">
+      <span class="line" data-i18n="hero-line1">Wir kennen die Menschen,</span>
+      <span class="line" data-i18n="hero-line2">die euren</span>
+      <span class="line hero-line3-de" data-lang-de><span style="color:var(--teal)">Kaffee</span> anbauen.</span>
+      <span class="line hero-line3-en" data-lang-en style="display:none">your <span style="color:var(--teal)">coffee.</span></span>
+    </div>
+    <div class="hero-meta">
+      <div class="hero-meta-item">Haidgasse 10/2 · <strong>1020 Wien</strong></div>
+      <div class="hero-meta-item" data-i18n="hero-reviews">5.0 ★ Google · 200+ Bewertungen</div>
+      <div class="hero-meta-item"><strong style="color:var(--teal);">★</strong> Falstaff Café Guide <strong>2026</strong></div>
+    </div>
+    <div class="hero-cta-wrap">
+      <a href="#kaffee" class="hero-btn hero-btn-outline" data-i18n="btn-discover">Kaffee entdecken</a>
+      <a href="#hours" class="hero-btn hero-btn-fill" data-i18n="btn-visit">Uns besuchen</a>
+    </div>
+  </div>
+  <div class="hero-scroll" id="hero-scroll" style="opacity:0;">
+    <span style="font-size:0.55rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(248,246,242,0.35);">Scroll</span>
+    <div class="hero-scroll-arrow"></div>
+    <div class="hero-scroll-arrow"></div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-section">
+  <div class="marquee-track">
+    <div class="marquee-item">Specialty Coffee<div class="marquee-dot"></div></div>
+    <div class="marquee-item">Eigene Röstung<div class="marquee-dot"></div></div>
+    <div class="marquee-item">El Salvador<div class="marquee-dot"></div></div>
+    <div class="marquee-item">México<div class="marquee-dot"></div></div>
+    <div class="marquee-item">Panamá<div class="marquee-dot"></div></div>
+    <div class="marquee-item">Costa Rica<div class="marquee-dot"></div></div>
+    <div class="marquee-item">Wien 1020<div class="marquee-dot"></div></div>
+    <div class="marquee-item">Hausgemacht<div class="marquee-dot"></div></div>
+    <div class="marquee-item">Seit 2023<div class="marquee-dot"></div></div>
+    <div class="marquee-item">Specialty Coffee<div class="marquee-dot"></div></div>
+    <div class="marquee-item">Eigene Röstung<div class="marquee-dot"></div></div>
+    <div class="marquee-item">El Salvador<div class="marquee-dot"></div></div>
+    <div class="marquee-item">México<div class="marquee-dot"></div></div>
+    <div class="marquee-item">Panamá<div class="marquee-dot"></div></div>
+    <div class="marquee-item">Costa Rica<div class="marquee-dot"></div></div>
+    <div class="marquee-item">Wien 1020<div class="marquee-dot"></div></div>
+    <div class="marquee-item">Hausgemacht<div class="marquee-dot"></div></div>
+    <div class="marquee-item">Seit 2023<div class="marquee-dot"></div></div>
+  </div>
+</div>
+
+<!-- DIESE WOCHE -->
+<section class="week-section reveal">
+  <div class="week-header">
+    <div>
+      <div class="eyebrow" data-i18n="week-eyebrow">Diese Woche bei uns</div>
+      <h2 class="section-title" data-i18n="week-title">Was gerade auf der Karte steht.</h2>
+    </div>
+    <div class="hafermilch" data-i18n="oat-badge">Hafermilch ohne Aufpreis</div>
+  </div>
+  <div class="week-grid">
+    <div class="week-card reveal reveal-delay-1">
+      <div class="week-tag">Neu</div>
+      <div class="week-name">Joghurt mit Granola</div>
+      <div class="week-desc">Apfelkompott · Rezept von Nadines Omi 🫶</div>
+    </div>
+    <div class="week-card reveal reveal-delay-2">
+      <div class="week-tag">Sommer</div>
+      <div class="week-name">Rosemary Cold Brew</div>
+      <div class="week-desc">Kalt gebrüht · frischer Rosmarin · Eis</div>
+    </div>
+    <div class="week-card reveal reveal-delay-3">
+      <div class="week-tag">Klassiker</div>
+      <div class="week-name">Iced Latte</div>
+      <div class="week-desc">Espresso · Milch · Eis · der Liebling</div>
+    </div>
+    <div class="week-card reveal reveal-delay-3">
+      <div class="week-tag">Hausgemacht</div>
+      <div class="week-name">Mohn Roulade</div>
+      <div class="week-desc">Täglich frisch · begrenzte Stücke</div>
+    </div>
+  </div>
+</section>
+
+<!-- DRINKS HORIZONTAL SCROLL -->
+<section class="drinks-section" id="kaffee">
+  <div class="drinks-header reveal">
+    <div>
+      <div class="eyebrow">Unsere Karte</div>
+      <h2 class="section-title" data-i18n="menu-title">Kaffee & Getränke</h2>
+    </div>
+  </div>
+  <!-- CATEGORY FILTERS -->
+  <div class="cat-filters" id="cat-filters">
+    <button class="cat-btn active" data-cat="all" data-bg="" onclick="filterCat(this)" data-i18n="filter-all">Alle</button>
+    <button class="cat-btn" data-cat="kaffee" onclick="filterCat(this)" data-bg="bilder/cat-kaffee.png" data-i18n="filter-kaffee">Kaffee</button>
+    <button class="cat-btn" data-cat="signature" onclick="filterCat(this)" data-bg="bilder/cat-signature.png" data-i18n="filter-signature">Signature ✦</button>
+    <button class="cat-btn" data-cat="kalt" onclick="filterCat(this)" data-bg="bilder/cat-kalt-2.png" data-i18n="filter-kalt">Kalt</button>
+    <button class="cat-btn" data-cat="noncoffee" onclick="filterCat(this)" data-bg="bilder/cat-kaffee-tisch.png" data-i18n="filter-noncoffee">Non Coffee</button>
+    <button class="cat-btn" data-cat="food" onclick="filterCat(this)" data-bg="bilder/cat-food.png" data-i18n="filter-food">Food</button>
+    <button class="cat-btn" data-cat="bags" onclick="filterCat(this)" data-bg="bilder/cat-bags.png" data-i18n="filter-bohnen">Bohnen</button>
+  </div>
+  <!-- CATEGORY BG -->
+  <div class="cat-bg" id="cat-bg"></div>
+  <div class="drinks-scroll" id="dscroll">
+    <div class="drink-card" data-cat="kaffee"><div class="drink-name">Espresso</div><div class="drink-desc" data-i18n-desc-de="Eigene Röstung · täglich frisch" data-i18n-desc-en="House roast · fresh daily">Eigene Röstung · täglich frisch</div><div class="drink-price">€3 | €4</div></div>
+    <div class="drink-card" data-cat="kaffee"><div class="drink-name">Americano</div><div class="drink-desc" data-i18n-desc-de="Eigene Röstung · täglich frisch" data-i18n-desc-en="House roast · fresh daily">Eigene Röstung · täglich frisch</div><div class="drink-price">€3 | €4</div></div>
+    <div class="drink-card" data-cat="kaffee"><div class="drink-name">Batch Brew</div><div class="drink-desc" data-i18n-desc-de="Wechselnde Single Origins" data-i18n-desc-en="Rotating single origins">Wechselnde Single Origins</div><div class="drink-price">€3,80</div></div>
+    <div class="drink-card" data-cat="kalt"><div class="drink-name">Cold Brew</div><div class="drink-desc" data-i18n-desc-de="Kalt gebrüht · smooth" data-i18n-desc-en="Cold brewed · smooth">Kalt gebrüht · smooth</div><div class="drink-price">€4,50</div></div>
+    <div class="drink-card" data-cat="kaffee"><div class="drink-name">Filter</div><div class="drink-desc" data-i18n-desc-de="200ml | 300ml | 400ml" data-i18n-desc-en="200ml | 300ml | 400ml">200ml | 300ml | 400ml</div><div class="drink-price">€5 | €6 | €7</div></div>
+    <div class="drink-card" data-cat="kaffee"><div class="drink-name">Macchiato</div><div class="drink-desc" data-i18n-desc-de="Hafermilch ohne Aufpreis" data-i18n-desc-en="Oat milk at no extra charge">Hafermilch ohne Aufpreis</div><div class="drink-price">€3,40 | €4,40</div></div>
+    <div class="drink-card" data-cat="kaffee"><div class="drink-name">Cortado</div><div class="drink-desc" data-i18n-desc-de="Hafermilch ohne Aufpreis" data-i18n-desc-en="Oat milk at no extra charge">Hafermilch ohne Aufpreis</div><div class="drink-price">€4,60</div></div>
+    <div class="drink-card" data-cat="kaffee"><div class="drink-name">Cappuccino</div><div class="drink-desc" data-i18n-desc-de="Hafermilch ohne Aufpreis" data-i18n-desc-en="Oat milk at no extra charge">Hafermilch ohne Aufpreis</div><div class="drink-price">€4,60</div></div>
+    <div class="drink-card" data-cat="kaffee"><div class="drink-name">Flat White</div><div class="drink-desc" data-i18n-desc-de="Hafermilch ohne Aufpreis" data-i18n-desc-en="Oat milk at no extra charge">Hafermilch ohne Aufpreis</div><div class="drink-price">€4,90</div></div>
+    <div class="drink-card" data-cat="kaffee"><div class="drink-name">Latte</div><div class="drink-desc" data-i18n-desc-de="Smooth, cremig, klassisch" data-i18n-desc-en="Smooth · creamy · classic">Smooth, cremig, klassisch</div><div class="drink-price">€5,–</div></div>
+    <div class="drink-card drink-card--signature" data-cat="signature"><div class="drink-badge">Signature</div><div class="drink-name">Dirty</div><div class="drink-desc" data-i18n-desc-de="Double shot espresso · Milch" data-i18n-desc-en="Double shot espresso · milk">Double shot espresso · Milch</div><div class="drink-price">€4,90</div></div>
+    <div class="drink-card drink-card--signature" data-cat="signature"><div class="drink-badge">Signature</div><div class="drink-name">Flow the Peach</div><div class="drink-desc">Cold brew · Pfirsich · Rosmarin · by twenty mar</div><div class="drink-price">€5,40</div></div>
+    <div class="drink-card drink-card--signature" data-cat="signature"><div class="drink-badge">Signature</div><div class="drink-name">Earl Salvador</div><div class="drink-desc">Coldbrew · Earl Grey · Agave · Star Anis</div><div class="drink-price">€5,20</div></div>
+    <div class="drink-card drink-card--signature" data-cat="signature"><div class="drink-badge">Signature</div><div class="drink-name">Sarchimor Forest</div><div class="drink-desc">Coldbrew · Sour Cherry · Dark Chocolate</div><div class="drink-price">€5,40</div></div>
+    <div class="drink-card" data-cat="kalt"><div class="drink-name">Espresso Tonic</div><div class="drink-desc" data-i18n-desc-de="Spritzig · kühl" data-i18n-desc-en="Sparkling · refreshing">Spritzig · kühl</div><div class="drink-price">€5,20</div></div>
+    <div class="drink-card" data-cat="kalt"><div class="drink-name">Matcha Tonic</div><div class="drink-desc" data-i18n-desc-de="Iced · erfrischend" data-i18n-desc-en="Iced · refreshing">Iced · erfrischend</div><div class="drink-price">€5,50</div></div>
+    <div class="drink-card" data-cat="kalt"><div class="drink-name">Matcha Agave Lemon Soda</div><div class="drink-desc" data-i18n-desc-de="Iced · leicht · sommerlich" data-i18n-desc-en="Iced · light · summery">Iced · leicht · sommerlich</div><div class="drink-price">€5,50</div></div>
+    <div class="drink-card" data-cat="kalt"><div class="drink-name">Hōjicha Cherry</div><div class="drink-desc" data-i18n-desc-de="Iced · fruchtig" data-i18n-desc-en="Iced · fruity">Iced · fruchtig</div><div class="drink-price">€5,50</div></div>
+    <div class="drink-card drink-card--signature" data-cat="kalt signature" data-img="bilder/cat-signature.png" data-label="Espresso Martini" onclick="openLightbox(this)"><div class="drink-badge">Signature</div><div class="drink-name">Espresso Martini</div><div class="drink-desc" data-i18n-desc-de="Iced · Signature" data-i18n-desc-en="Iced · Signature">Iced · Signature</div><div class="drink-price">€10,–</div></div>
+    <div class="drink-card" data-cat="noncoffee"><div class="drink-name">Tea</div><div class="drink-desc" data-i18n-desc-de="Auswahl täglich" data-i18n-desc-en="Selection changes daily">Auswahl täglich</div><div class="drink-price">€4,50</div></div>
+    <div class="drink-card" data-cat="noncoffee"><div class="drink-name">Hot Chocolate</div><div class="drink-desc" data-i18n-desc-de="Hausgemacht · cremig" data-i18n-desc-en="Homemade · creamy">Hausgemacht · cremig</div><div class="drink-price">€4,90</div></div>
+    <div class="drink-card" data-cat="noncoffee"><div class="drink-name">Chai</div><div class="drink-desc" data-i18n-desc-de="Gewürzt · wärmend" data-i18n-desc-en="Spiced · warming">Gewürzt · wärmend</div><div class="drink-price">€5,20</div></div>
+    <div class="drink-card" data-cat="noncoffee"><div class="drink-name">Hōjicha</div><div class="drink-desc" data-i18n-desc-de="Geröstet · warm · komplex" data-i18n-desc-en="Roasted · warm · complex">Geröstet · warm · komplex</div><div class="drink-price">€5,20</div></div>
+    <div class="drink-card" data-cat="noncoffee"><div class="drink-name">Matcha</div><div class="drink-desc" data-i18n-desc-de="Selten so gut in Wien" data-i18n-desc-en="Rarely this good in Vienna">Selten so gut in Wien</div><div class="drink-price">€5,50</div></div>
+    <div class="drink-card" data-cat="food" data-img="bilder/cat-food.png" data-label="Joghurt & Granola" onclick="openLightbox(this)"><div class="drink-name">Joghurt & Granola</div><div class="drink-desc" data-i18n-desc-de="Omi's Rezept · Hausgemacht" data-i18n-desc-en="Grandma's recipe · homemade">Omi's Rezept · Hausgemacht</div><div class="drink-price">€8,–</div></div>
+    <div class="drink-card" data-cat="food" data-img="bilder/cat-food-kuchen.png" data-label="Kuchen" onclick="openLightbox(this)"><div class="drink-name">Kuchen</div><div class="drink-desc" data-i18n-desc-de="Hausgemacht & vegan" data-i18n-desc-en="Homemade & vegan">Hausgemacht & vegan</div><div class="drink-price">€4,90</div></div>
+    <div class="drink-card" data-cat="food"><div class="drink-name">Oliven</div><div class="drink-desc" data-i18n-desc-de="Kleine Snacks" data-i18n-desc-en="Small snacks">Kleine Snacks</div><div class="drink-price">€3,50</div></div>
+    <div class="drink-card drink-card--bags" data-cat="bags"><div class="drink-badge">Bohnen</div><div class="drink-name">S · 200g</div><div class="drink-desc" data-i18n-desc-de="Eigene Röstung · zum Mitnehmen" data-i18n-desc-en="House roast · to take home">Eigene Röstung · zum Mitnehmen</div><div class="drink-price">€13,–</div></div>
+    <div class="drink-card drink-card--bags" data-cat="bags"><div class="drink-badge">Bohnen</div><div class="drink-name">M · 500g</div><div class="drink-desc" data-i18n-desc-de="Eigene Röstung · zum Mitnehmen" data-i18n-desc-en="House roast · to take home">Eigene Röstung · zum Mitnehmen</div><div class="drink-price">€27,–</div></div>
+    <div class="drink-card drink-card--bags" data-cat="bags"><div class="drink-badge">Bohnen</div><div class="drink-name">L · 1000g</div><div class="drink-desc" data-i18n-desc-de="Eigene Röstung · zum Mitnehmen" data-i18n-desc-en="House roast · to take home">Eigene Röstung · zum Mitnehmen</div><div class="drink-price">€42,–</div></div>
+  </div>
+  <div class="drink-scroll-hint" data-i18n="scroll-hint">Alles vegetarisch · Hafermilch ohne Aufpreis · Preise können variieren</div>
+  <div style="display:flex;flex-wrap:wrap;gap:0.6rem;padding:1rem 4rem 0;">
+    <span style="font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;border:0.5px solid rgba(26,26,26,0.12);padding:0.3rem 0.7rem;color:#888;">🐕 <span data-i18n="badge-dogs">Hunde willkommen</span></span>
+    <span style="font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;border:0.5px solid rgba(26,26,26,0.12);padding:0.3rem 0.7rem;color:#888;">💳 <span data-i18n="badge-card">Kartenzahlung</span></span>
+    <span style="font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;border:0.5px solid rgba(26,26,26,0.12);padding:0.3rem 0.7rem;color:#888;">📶 <span data-i18n="badge-wifi">WLAN verfügbar</span></span>
+    <span style="font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;border:0.5px solid var(--teal);padding:0.3rem 0.7rem;color:var(--teal);">☀️ <span data-i18n="badge-garden">Schanigarten</span></span>
+    <span style="font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;border:0.5px solid rgba(26,26,26,0.12);padding:0.3rem 0.7rem;color:#888;font-style:italic;"><span data-i18n="badge-allergens">Allergene auf Anfrage</span></span>
+  </div>
+</section>
+
+<!-- HERKUNFT -->
+<section class="herkunft-section">
+  <div class="herkunft-inner">
+    <div class="herkunft-text reveal">
+      <div class="eyebrow" data-i18n="herkunft-eyebrow">Woher euer Kaffee kommt</div>
+      <h2 class="section-title" data-i18n="herkunft-title">Vier Länder. Farmer, die wir persönlich kennen.</h2>
+      <p data-i18n="herkunft-text">Wir kaufen grünen Kaffee direkt von den Produzenten — keine Zwischenhändler, keine Anonymität. Jede Bohne hat eine Geschichte. Wir reisen, verkosten und bauen echte Beziehungen auf. Das schmeckt man.</p>
+    </div>
+    <div class="herkunft-countries reveal reveal-delay-1">
+      <div class="country-item"><span class="country-num">01</span><span class="country-name">El Salvador</span><span class="country-note" data-i18n="country-el-salvador">Lieblingsespresso · vollmundig</span><span class="country-arrow">→</span></div>
+      <div class="country-item"><span class="country-num">02</span><span class="country-name">México</span><span class="country-note" data-i18n="country-mexico">Schokoladig · perfekt als Filter</span><span class="country-arrow">→</span></div>
+      <div class="country-item"><span class="country-num">03</span><span class="country-name">Panamá</span><span class="country-note" data-i18n="country-panama">Fruchtig · komplex · für Kenner</span><span class="country-arrow">→</span></div>
+      <div class="country-item"><span class="country-num">04</span><span class="country-name">Costa Rica</span><span class="country-note" data-i18n="country-costarica">Hell · lebendig · Sommerfilter</span><span class="country-arrow">→</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE -->
+<section class="quote-section" id="quote-section">
+  <div class="quote-bg-img"></div>
+  <div class="quote-content">
+    <blockquote cite="https://maps.google.com" lang="en" style="display:contents">
+      <div class="quote-line1">There really isn't</div>
+      <div class="quote-line2">anything quite like</div>
+      <div class="quote-line3" id="quote-big">Small Batch.</div>
+    </blockquote>
+    <div class="quote-stars" id="quote-stars">
+      <span class="quote-star" style="transition-delay:0.6s">★</span>
+      <span class="quote-star" style="transition-delay:0.7s">★</span>
+      <span class="quote-star" style="transition-delay:0.8s">★</span>
+      <span class="quote-star" style="transition-delay:0.9s">★</span>
+      <span class="quote-star" style="transition-delay:1.0s">★</span>
+    </div>
+    <div class="quote-source" data-i18n="quote-source">— Google Bewertung · 5 Sterne · Haidgasse 10/2, Wien</div>
+    <div class="quote-cta" data-i18n="quote-cta">Kommt vorbei. Mi–Fr ab 8:00.</div>
+  </div>
+</section>
+
+<!-- FOUNDERS -->
+<section class="founders-section" id="ueber">
+  <div class="founders-img">
+    <img src="bilder/founders.jpg" alt="Nadine und Clemens small batch café Wien" style="width:100%;height:100%;object-fit:cover;" loading="lazy">
+  </div>
+  <div class="founders-gradient"></div>
+  <div class="founders-text">
+    <div class="eyebrow" data-i18n="founders-eyebrow">Das sind wir</div>
+    <h2 class="founders-headline" data-i18n="founders-quote">"Den Schlüssel haben wir<br>am 1. Mai bekommen."</h2>
+    <p class="founders-letter" data-i18n="founders-text">Seitdem waren wir jeden einzigen Tag hier — reinigen, bauen, vorbereiten. Zusammen mit Familie und Freunden. Wir wollten nicht nach Deadline öffnen, sondern mit Intention. Wir kennen unsere Farmer persönlich. Wir rösten selbst, in kleinen Mengen. Jede Bohne hat eine Geschichte.</p>
+    <div class="founders-sig">— Nadine & Clemens</div>
+  </div>
+</section>
+
+<!-- INSTAGRAM -->
+<section class="ig-section">
+  <div class="ig-header reveal">
+    <div>
+      <div class="eyebrow" data-i18n="ig-eyebrow">Aus unserem Alltag</div>
+      <h2 class="section-title">@smallbatch.cafe</h2>
+    </div>
+    <a href="https://instagram.com/smallbatch.cafe" target="_blank" class="ig-cta" style="display:flex;align-items:center;gap:0.4rem;">
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+  <span data-i18n="ig-follow">Folgen</span>
+</a>
+  </div>
+  <div class="ig-grid">
+    <div class="ig-item"><img src="bilder/ig-1.jpg" alt="Latte Art small batch café" style="width:100%;height:100%;object-fit:cover;" loading="lazy"><div class="ig-overlay"><span class="ig-handle">@smallbatch.cafe</span></div></div>
+    <div class="ig-item"><img src="bilder/ig-2.jpg" alt="Bogenfenster small batch café" style="width:100%;height:100%;object-fit:cover;" loading="lazy"><div class="ig-overlay"><span class="ig-handle">@smallbatch.cafe</span></div></div>
+    <div class="ig-item"><img src="bilder/ig-3.jpg" alt="Seit 2023 small batch café" style="width:100%;height:100%;object-fit:cover;" loading="lazy"><div class="ig-overlay"><span class="ig-handle">@smallbatch.cafe</span></div></div>
+    <div class="ig-item"><img src="bilder/ig-4.jpg" alt="Kaffeebeutel small batch café" style="width:100%;height:100%;object-fit:cover;" loading="lazy"><div class="ig-overlay"><span class="ig-handle">@smallbatch.cafe</span></div></div>
+    <div class="ig-item"><img src="bilder/ig-5.jpg" alt="Sofa small batch café Wien" style="width:100%;height:100%;object-fit:cover;" loading="lazy"><div class="ig-overlay"><span class="ig-handle">@smallbatch.cafe</span></div></div>
+    <div class="ig-item"><img src="bilder/ig-6.jpg" alt="small batch café Logo" style="width:100%;height:100%;object-fit:cover;" loading="lazy"><div class="ig-overlay"><span class="ig-handle">@smallbatch.cafe</span></div></div>
+  </div>
+</section>
+
+
+<!-- BEWERTUNG -->
+<section style="padding:3rem 4rem;background:#f7f4ef;border-top:0.5px solid rgba(26,26,26,0.06);text-align:center;">
+  <div class="eyebrow" style="margin-bottom:0.8rem;" data-i18n="review-eyebrow">Hat es euch gefallen?</div>
+  <h2 style="font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-style:italic;font-weight:400;margin-bottom:0.6rem;" data-i18n="review-title">Teilt eure Erfahrung.</h2>
+  <p style="font-size:0.82rem;color:#767676;font-weight:300;margin-bottom:1.8rem;" data-i18n="review-text">Jede Bewertung hilft uns — und dem nächsten Gast, der sich traut.</p>
+  <a href="https://www.google.com/maps/search/small+batch+café+Haidgasse+10+Wien" target="_blank" rel="noopener" class="review-btn">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+      <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+      <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+      <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/>
+      <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+    </svg>
+    <span data-i18n="review-btn">Bewertung auf Google schreiben</span>
+  </a>
+</section>
+
+<!-- HOURS -->
+<section class="hours-section" id="hours">
+  <div class="hours-left reveal">
+    <div class="eyebrow" data-i18n="hours-eyebrow">Wann ihr uns findet</div>
+    <h2 class="section-title" data-i18n="hours-title">Öffnungszeiten</h2>
+    <table class="hours-table">
+      <tr id="row-1"><td class="day" data-i18n="day-mon">Montag</td><td class="ruhetag" data-i18n="day-closed">Ruhetag</td></tr>
+      <tr id="row-2"><td class="day" data-i18n="day-tue">Dienstag</td><td class="ruhetag" data-i18n="day-closed">Ruhetag</td></tr>
+      <tr id="row-3"><td class="day" data-i18n="day-wed">Mittwoch</td><td>8:00 – 15:30</td></tr>
+      <tr id="row-4"><td class="day" data-i18n="day-thu">Donnerstag</td><td>8:00 – 15:30</td></tr>
+      <tr id="row-5"><td class="day" data-i18n="day-fri">Freitag</td><td>8:00 – 15:30</td></tr>
+      <tr id="row-6"><td class="day" data-i18n="day-sat">Samstag</td><td>9:00 – 15:00</td></tr>
+      <tr id="row-0"><td class="day" data-i18n="day-sun">Sonntag</td><td>9:00 – 15:00</td></tr>
+    </table>
+    <div class="hours-address">
+      Haidgasse 10/2 · 1020 Wien<br>
+      <span data-i18n="hours-address">U2 Taborstraße · 5 min zu Fuß</span><br>
+      <span data-i18n="hours-garden">Kleiner Schanigarten bei Schönwetter ☀️</span><br><br><span style="font-size:0.72rem;color:#888;font-style:italic;"><span data-i18n="hours-exceptions-pre">Feiertage &amp; Urlaub auf</span> <a href="https://instagram.com/smallbatch.cafe" target="_blank" style="color:var(--teal);text-decoration:none;">@smallbatch.cafe</a></span>
+    </div>
+  </div>
+  <div class="hours-right reveal">
+    <div class="eyebrow" data-i18n="map-eyebrow">Wo ihr uns findet</div>
+    <h2 class="section-title">Haidgasse 10/2</h2>
+    <div class="map-wrap" id="map-container">
+      <!-- Map loads only after cookie consent -->
+      <div id="map-placeholder" style="width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#f0ebe3;gap:1rem;cursor:pointer;" onclick="loadMap()">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#5bbfaa" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <div style="font-size:0.72rem;color:#888;text-align:center;line-height:1.6;">
+          Haidgasse 10/2 · 1020 Wien<br>
+          <span style="font-size:0.62rem;color:#888;" data-i18n="map-link">Karte anzeigen (Google Maps)</span>
+        </div>
+        <button onclick="loadMap()" id="map-btn" style="font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;background:var(--teal);color:#fff;border:none;padding:0.5rem 1rem;cursor:pointer;font-family:inherit;" data-i18n="map-btn">Karte laden</button>
+      </div>
+      <iframe id="map-iframe" src="" style="display:none;width:100%;height:100%;border:none;" allowfullscreen loading="lazy"></iframe>
+    </div>
+    <script>
+    function loadMap() {
+      const ph = document.getElementById('map-placeholder');
+      const iframe = document.getElementById('map-iframe');
+      const btn = document.getElementById('map-btn');
+      if(btn) btn.textContent = (localStorage.getItem('lang')==='en') ? 'Loading...' : 'Lädt...';
+      if(ph) { ph.style.opacity='0.5'; ph.style.pointerEvents='none'; }
+      if(iframe) {
+        iframe.onload = () => { if(ph) ph.style.display='none'; iframe.style.display='block'; };
+        iframe.src = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d664.7!2d16.3821!3d48.2185!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x476d079b9dbcb22f%3A0x4b9d6feef97ec38a!2sHaidgasse+10%2C+1020+Wien!5e0!3m2!1sde!2sat!4v1';
+        localStorage.setItem('maps-consent', '1');
+      }
+    }
+    // Auto-load if already consented
+    if(localStorage.getItem('maps-consent')) loadMap();
+    </script>
+  </div>
+</section>
+
+<!-- RESERVIERUNG -->
+<section class="reserve-section">
+  <div class="reserve-inner">
+    <div class="reveal">
+      <div class="eyebrow" data-i18n="contact-eyebrow">Anfragen</div>
+      <h2 class="section-title"><span data-i18n="contact-title">Ihr seid eine Gruppe?</span><br><span data-i18n="contact-subtitle">Es ist ein besonderer Morgen.</span></h2>
+      <p style="margin-top:1.5rem;" data-i18n="contact-sub">Wir sind klein — 35m². Und genau deshalb freuen wir uns über jede Anfrage.</p>
+    </div>
+    <form class="form reveal" onsubmit="return false">
+      <div class="form-row">
+        <div class="form-field"><label class="form-label" data-i18n="form-name">Name</label><input class="form-input" type="text" placeholder="Euer Name" data-i18n-placeholder="form-placeholder-name"></div>
+        <div class="form-field"><label class="form-label" data-i18n="form-persons">Personen</label><input class="form-input" type="number" placeholder="Anzahl" min="1" data-i18n-placeholder="form-placeholder-persons"></div>
+      </div>
+      <div class="form-field"><label class="form-label" data-i18n="form-date">Datum</label><input class="form-input" type="date"></div>
+      <div class="form-field"><label class="form-label" data-i18n="form-message">Nachricht</label><textarea class="form-textarea" placeholder="Was plant ihr?" data-i18n-placeholder="form-placeholder-message"></textarea></div>
+      <button class="form-submit" id="form-submit-btn" onclick="handleFormSubmit(event)" data-i18n="contact-btn">Anfrage senden</button>
+      <div id="form-feedback" style="font-size:0.72rem;margin-top:0.5rem;display:none;"></div>
+      <div class="form-note" data-i18n="contact-response">Kein Bot. Wir lesen jede Nachricht selbst und antworten so schnell wir können.</div>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-logo">small batch</div>
+    <div class="footer-tagline" data-i18n="footer-tagline">Specialty Coffee · Eigene Röstung · Wien 1020</div>
+    <div class="footer-hours" data-i18n="footer-hours">Mi–Fr: 8:00–15:30 · Sa–So: 9:00–15:00 · Mo–Di: Ruhetag</div>
+  </div>
+  <div>
+    <div class="footer-col-title" data-i18n="footer-links">Links</div>
+    <ul class="footer-links">
+      <li><a href="https://wa.me/436763979539" target="_blank" style="display:flex;align-items:center;gap:0.4rem;"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>WhatsApp</a></li>
+    <li><a href="https://instagram.com/smallbatch.cafe" target="_blank" style="display:flex;align-items:center;gap:0.4rem;">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+      @smallbatch.cafe
+    </a></li>
+      <li><a href="#kaffee" data-i18n="footer-menu">Karte</a></li>
+      <li><a href="#hours" data-i18n="nav-hours">Öffnungszeiten</a></li>
+      <li><a href="#ueber" data-i18n="nav-ueber">Über uns</a></li>
+    </ul>
+  </div>
+  <div>
+    <div class="footer-col-title" data-i18n="footer-legal-title">Legal</div>
+    <ul class="footer-links">
+      <li><a href="#" onclick="document.getElementById('m-imp').classList.add('open');return false" aria-label="Impressum öffnen" data-i18n="footer-imprint">Impressum</a></li>
+      <li><a href="#" onclick="document.getElementById('m-dsg').classList.add('open');return false" aria-label="Datenschutz öffnen" data-i18n="footer-privacy">Datenschutz</a></li>
+    </ul>
+  </div>
+  <div class="footer-legal">© 2026 small batch OG · FN 648914 k · Haidgasse 10/2 · 1020 Wien · Inhaber: Nadine Unterweger, Clemens Erlsbacher</div>
+</footer>
+
+<!-- MODALS -->
+<div id="m-imp" class="modal"><div class="modal-box"><button class="modal-close" onclick="document.getElementById('m-imp').classList.remove('open')">✕</button><h2 class="modal-title">Impressum</h2><div class="modal-body"><strong>small batch OG</strong><br>Haidgasse 10/2, 1020 Wien<br>FN 648914 k · Handelsgericht Wien<br><br>Inhaber: Nadine Unterweger, Clemens Erlsbacher<br>Unternehmensgegenstand: Gastronomie<br><br>Kontakt: <a href="mailto:hello@smallbatch.cafe">hello@smallbatch.cafe</a></div></div></div>
+<div id="m-dsg" class="modal"><div class="modal-box"><button class="modal-close" onclick="document.getElementById('m-dsg').classList.remove('open')">✕</button><h2 class="modal-title">Datenschutz</h2><div class="modal-body">Verantwortlicher: small batch OG, Haidgasse 10/2, 1020 Wien<br><br>Diese Website erhebt ohne Einwilligung keine personenbezogenen Daten. Cookies: Nur technisch notwendige ohne Einwilligung.<br><br>Kontakt: <a href="mailto:hello@smallbatch.cafe">hello@smallbatch.cafe</a></div></div></div>
+
+</main>
+
+<!-- COOKIE -->
+<a id="whatsapp-btn" href="https://wa.me/436763979539" target="_blank" rel="noopener" aria-label="WhatsApp Kontakt">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="white">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+<div id="cookie"><div class="cookie-text" data-i18n="cookie-text">Wir verwenden Cookies. Mit „Akzeptieren" stimmen Sie der Verwendung aller Cookies zu.</div><div class="cookie-btns"><button class="cbtn cbtn-no" onclick="hideCookie()" data-i18n="cookie-decline">Nur notwendige</button><button class="cbtn cbtn-yes" onclick="hideCookie()" data-i18n="cookie-accept">Akzeptieren</button></div></div>
+
+<script>
+// CURSOR
+const cur = document.getElementById('cursor');
+const ring = document.getElementById('cursor-ring');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.transform=`translate(${mx}px,${my}px)`;},{passive:true});
+(function ringLoop(){if(Math.abs(mx-rx)>0.1||Math.abs(my-ry)>0.1){rx+=(mx-rx)*0.12;ry+=(my-ry)*0.12;ring.style.transform=`translate(${rx}px,${ry}px)`;}requestAnimationFrame(ringLoop);})();
+document.querySelectorAll('a,button,.drink-card,.country-item,.ig-item').forEach(el=>{
+  el.addEventListener('mouseenter',()=>cur.classList.add('big'));
+  el.addEventListener('mouseleave',()=>cur.classList.remove('big'));
+});
+
+// STATUS
+(function(){
+  const now=new Date(new Date().toLocaleString('en-US',{timeZone:'Europe/Vienna'}));
+  const d=now.getDay(),h=now.getHours()+now.getMinutes()/60;
+  const S={0:{o:9,c:15},3:{o:8,c:15.5},4:{o:8,c:15.5},5:{o:8,c:15.5},6:{o:9,c:15}};
+  const N_de=['Sonntag','Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag'];
+  const N_en=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  const dot=document.getElementById('sdot'),txt=document.getElementById('stext');
+  const row=document.getElementById('row-'+d);
+  if(row)row.classList.add('hours-today');
+  const t=S[d];
+  const lang=localStorage.getItem('lang')||'de';
+  const N=lang==='en'?N_en:N_de;
+  if(t&&h>=t.o&&h<t.c){
+    const m=Math.round((t.c-h)*60);
+    dot.style.background=m<=45?'var(--warn)':'var(--open)';
+    txt.textContent=m<=45
+      ?(lang==='en'?`Closes in ${m} min`:`Schließt in ${m} min`)
+      :(lang==='en'?`Open · until ${Math.floor(t.c)}:${t.c%1?'30':'00'}`:`Geöffnet · bis ${Math.floor(t.c)}:${t.c%1?'30':'00'}`);
+  }else{
+    dot.style.background='var(--closed)';
+    for(let i=1;i<=7;i++){const n=(d+i)%7;if(S[n]){
+      txt.textContent=lang==='en'?`Closed · opens ${N[n]}`:`Geschlossen · öffnet ${N[n]}`;break;
+    }}
+  }
+})();
+
+// NAV SCROLL
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>80),{passive:true});
+
+// REVEAL ON SCROLL
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});
+},{threshold:0.12});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+// Pause marquee when off-screen
+const marqueeTrack = document.querySelector('.marquee-track');
+if(marqueeTrack){
+  const marqueeObs = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      marqueeTrack.style.animationPlayState = e.isIntersecting ? 'running' : 'paused';
+    });
+  },{threshold:0});
+  marqueeObs.observe(marqueeTrack);
+}
+
+// Scroll to top button
+const scrollTopBtn = document.getElementById('scroll-top');
+if(scrollTopBtn){
+  window.addEventListener('scroll',()=>{
+    scrollTopBtn.classList.toggle('visible', window.scrollY > window.innerHeight);
+  },{passive:true});
+}
+
+// HERO IMAGE SCALE
+const heroImg = document.querySelector('.hero-bg img');
+if(heroImg) heroImg.style.transform='scale(1)';
+
+// DRAG SCROLL DRINKS
+let hasMoved=false;
+const ds=document.getElementById('dscroll');
+let isDown=false,startX,scrollLeft;
+ds.addEventListener('mousedown',e=>{isDown=true;startX=e.pageX-ds.offsetLeft;scrollLeft=ds.scrollLeft;});
+ds.addEventListener('mouseleave',()=>isDown=false);
+ds.addEventListener('mouseup',()=>isDown=false);
+ds.addEventListener('mousemove',e=>{if(!isDown)return;e.preventDefault();const x=e.pageX-ds.offsetLeft;ds.scrollLeft=scrollLeft-(x-startX)*1.5;});
+
+// COOKIE
+function hideCookie(){localStorage.setItem('cc','1');document.getElementById('cookie').style.display='none';}
+if(localStorage.getItem('cc'))document.getElementById('cookie').style.display='none';
+</script>
+
+
+<!-- COFFEE ANIMATION OVERLAY -->
+
+<style>
+#bean-wrap{
+  position:fixed;right:97px;top:0;
+  width:47px;height:47px;
+  z-index:500;pointer-events:none;
+  perspective:280px;
+  will-change:transform,opacity;
+  filter:drop-shadow(3px 6px 10px rgba(60,20,0,0.3));
+  transform:translateY(15vh);
+  opacity:0;
+}
+#bean-sprite{
+  width:100%;height:100%;
+  transform-origin:center center;
+  will-change:transform;
+  mix-blend-mode:screen;
+  filter:sepia(0.3) saturate(0.8);
+}
+#cup-wrap{
+  position:fixed;right:30px;bottom:90px;
+  width:180px;height:162px;
+  overflow:visible;
+  z-index:499;pointer-events:none;
+  opacity:0;visibility:hidden;transition:opacity 0.3s ease 0s,visibility 0s ease 0.3s;
+}
+
+</style>
+<div id="bean-wrap">
+  <img id="bean-sprite" src="bilder/bean.png" alt="">
+</div>
+<div id="cup-wrap">
+<div id="splash-el" style="position:absolute;top:25px;left:45%;transform:translateX(-50%);pointer-events:none;transform-origin:center bottom;"><svg width="144" height="72" viewBox="0 0 120 60"><ellipse cx="60" cy="52" rx="4" ry="10" fill="#7a4a28" opacity="0.85" transform="rotate(0,60,52)"/><ellipse cx="35" cy="42" rx="4" ry="12" fill="#7a4a28" opacity="0.75" transform="rotate(-25,35,42)"/><ellipse cx="18" cy="28" rx="3" ry="10" fill="#8a5535" opacity="0.7" transform="rotate(-40,18,28)"/><ellipse cx="85" cy="42" rx="4" ry="12" fill="#7a4a28" opacity="0.75" transform="rotate(25,85,42)"/><ellipse cx="102" cy="28" rx="3" ry="10" fill="#8a5535" opacity="0.7" transform="rotate(40,102,28)"/><circle cx="10" cy="35" r="3" fill="#9a6040" opacity="0.5"/><circle cx="110" cy="32" r="3" fill="#9a6040" opacity="0.5"/><ellipse cx="60" cy="8" rx="3" ry="9" fill="#6b3a1f" opacity="0.85"/></svg></div>
+<img src="bilder/tasse.png" alt="small batch café" style="width:180px;height:auto;display:block;">
+</div>
+<script>
+// CATEGORY FILTER
+(function(){
+  const btns = document.querySelectorAll('.cat-btn');
+  console.log('CAT FILTER INIT - buttons found:', btns.length);
+  const cards = document.querySelectorAll('.drink-card');
+  const bg = document.getElementById('cat-bg');
+
+  btns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      btns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const cat = btn.dataset.cat;
+      const bgImg = btn.dataset.bg;
+
+      // Filter cards
+      cards.forEach(card => {
+        const cardCat = card.dataset.cat || 'all';
+        if(cat === 'all' || cardCat.includes(cat)){
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+
+      // Background image
+      if(bgImg){
+        bg.style.backgroundImage = `url('${bgImg}')`;
+        bg.classList.add('visible');
+      } else {
+        bg.classList.remove('visible');
+      }
+
+      // Scroll to start
+      document.getElementById('dscroll').scrollLeft = 0;
+    });
+  });
+})();
+</script>
+
+<div id="lightbox" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.85);align-items:center;justify-content:center;cursor:pointer;" onclick="this.style.display='none'">
+  <div style="max-width:500px;width:90%;text-align:center;">
+    <img id="lightbox-img" src="" style="width:100%;max-height:75vh;object-fit:contain;border-radius:4px;">
+    <div id="lightbox-label" style="color:#f7f4ef;font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-style:italic;margin-top:1rem;"></div>
+  </div>
+</div>
+<script>
+function filterCat(btn) {
+  console.log('filterCat called:', btn.dataset.cat);
+  document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  const cat = btn.dataset.cat;
+  const bgImg = btn.dataset.bg;
+  document.querySelectorAll('.drink-card').forEach(card => {
+    const cardCat = card.dataset.cat || 'all';
+    if(cat === 'all' || cardCat.includes(cat)){
+      card.classList.remove('hidden');
+    } else {
+      card.classList.add('hidden');
+    }
+  });
+  const bg = document.getElementById('cat-bg');
+  if(bg){
+    if(bgImg){ bg.style.backgroundImage = "url('"+bgImg+"')"; bg.classList.add('visible'); }
+    else { bg.classList.remove('visible'); }
+  }
+  document.getElementById('dscroll').scrollLeft = 0;
+}
+
+
+</script>
+
+<script>
+function openLightbox(card) {
+  var lb = document.getElementById('lightbox');
+  document.getElementById('lightbox-img').src = card.dataset.img;
+  document.getElementById('lightbox-label').textContent = card.dataset.label || '';
+  lb.style.display = 'flex';
+}
+</script>
+<!-- LIGHTBOX -->
+
+
+<script>
+(function(){
+  // ── BEAN SPRITE ──
+  const beanWrap = document.getElementById('bean-wrap');
+  const beanImg = document.getElementById('bean-sprite');
+  const cw = document.getElementById('cup-wrap');
+  let rotY = 0, lastScrollY = 0, ticking = false;
+
+  function update(){
+    const scrollY = window.scrollY;
+    const maxScroll = document.body.scrollHeight - window.innerHeight;
+    const p = Math.min(scrollY / maxScroll, 1);
+    const delta = scrollY - lastScrollY;
+    lastScrollY = scrollY;
+
+    // Fall
+    beanWrap.style.transform = `translateY(${12 + p * 76}vh)`;
+
+    // Rotate
+    rotY += delta * 0.4 + 0.8;
+    beanImg.style.transform = `rotateZ(${rotY}deg)`;
+
+    // Fade bean into cup
+    beanWrap.style.opacity = p > 0.88
+      ? String(Math.max(0, 1-(p-0.88)/0.04))
+      : p < 0.02 ? '0' : '1';
+
+    // Show cup
+    if(p > 0.88){ cw.style.opacity='1'; cw.style.visibility='visible'; }
+    else { cw.style.opacity='0'; cw.style.visibility='hidden'; }
+
+    // Splash
+    // splash is always visible - no trigger needed
+
+    ticking = false;
+  }
+
+  window.addEventListener('scroll', ()=>{
+    if(!ticking){ requestAnimationFrame(update); ticking=true; }
+  }, {passive:true});
+  update();
+
+  })();
+
+// Quote section animations
+(function(){
+  const section = document.getElementById('quote-section');
+  const stars = document.querySelectorAll('.quote-star');
+  let animated = false;
+
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if(e.isIntersecting && !animated) {
+        animated = true;
+        section.classList.add('in-view');
+        // Animate stars one by one
+        stars.forEach((s,i) => {
+          setTimeout(() => s.style.opacity='1', 600 + i*120);
+        });
+        // Shine effect
+        setTimeout(() => {
+          document.getElementById('quote-big').classList.add('shining');
+        }, 400);
+      }
+    });
+  }, {threshold: 0.3});
+
+  if(section) obs.observe(section);
+
+  // Parallax on scroll
+  window.addEventListener('scroll', () => {
+    if(!section) return;
+    const rect = section.getBoundingClientRect();
+    const progress = -rect.top / window.innerHeight;
+    const l1 = section.querySelector('.quote-line1');
+    const l3 = section.querySelector('.quote-line3');
+    if(l1) l1.style.transform = `translateX(${-progress * 20}px)`;
+    if(l3) l3.style.transform = `translateX(${progress * 15}px)`;
+  }, {passive:true});
+})();
+</script>
+
+
+<script>
+// ── LANGUAGE SWITCHER DE/EN ──
+const translations = {
+  de: {
+    'nav-kaffee': 'Kaffee',
+    'nav-ueber': 'Über uns',
+    'nav-hours': 'Öffnungszeiten',
+    'hero-line1': 'Wir kennen die Menschen,',
+    'hero-line2': 'die euren',
+    'hero-line3': 'Kaffee anbauen.',
+    'btn-discover': 'Kaffee entdecken',
+    'btn-visit': 'Uns besuchen',
+    'menu-title': 'Kaffee & Getränke',
+    'week-eyebrow': 'Diese Woche',
+    'week-title': 'Was gerade auf der Karte steht.',
+    'menu-eyebrow': 'UNSERE KARTE',
+    'review-eyebrow': 'Was Gäste sagen',
+    'review-btn': 'Alle Bewertungen',
+    'review-title': 'Hat es euch gefallen? Sagt es weiter.',
+    'review-text': 'Jede Bewertung hilft uns — und dem nächsten Gast, der sich traut.',
+    'ig-eyebrow': 'Aus unserem Alltag',
+    'hours-eyebrow': 'Wann ihr uns findet',
+    'hours-title': 'Öffnungszeiten',
+    'map-eyebrow': 'Wo ihr uns findet',
+    'map-link': 'Karte anzeigen (Google Maps)',
+    'map-btn': 'Karte laden',
+    'hours-garden': 'Kleiner Schanigarten bei Schönwetter ☀️',
+    'day-mon': 'Montag',
+    'day-tue': 'Dienstag',
+    'day-wed': 'Mittwoch',
+    'day-thu': 'Donnerstag',
+    'day-fri': 'Freitag',
+    'day-sat': 'Samstag',
+    'day-sun': 'Sonntag',
+    'day-closed': 'Ruhetag',
+    'hours-exceptions': 'Feiertage & Ausnahmen: @smallbatch.cafe',
+    'hours-address': 'U2 Taborstraße · 5 min zu Fuß',
+    'contact-btn': 'Anfrage senden',
+    'contact-eyebrow': 'Anfragen',
+    'contact-title': 'Ihr seid eine Gruppe?',
+    'form-name': 'Name',
+    'form-persons': 'Personen',
+    'form-date': 'Datum',
+    'form-message': 'Nachricht',
+    'form-placeholder-name': 'Euer Name',
+    'form-placeholder-persons': 'Anzahl',
+    'form-placeholder-message': 'Was plant ihr?',
+    'hours-exceptions-pre': 'Feiertage & Urlaub auf',
+    'footer-tagline': 'Specialty Coffee · Eigene Röstung · Wien 1020',
+    'footer-links': 'Links',
+    'footer-legal-title': 'Legal',
+    'footer-menu': 'Karte',
+    'footer-imprint': 'Impressum',
+    'footer-privacy': 'Datenschutz',
+    'cookie-text': 'Wir verwenden Cookies. Mit „Akzeptieren" stimmen Sie der Verwendung aller Cookies zu.',
+    'cookie-decline': 'Nur notwendige',
+    'cookie-accept': 'Akzeptieren',
+    'footer-hours': 'Mi–Fr: 8:00–15:30 · Sa–So: 9:00–15:00 · Mo–Di: Ruhetag',
+    'contact-subtitle': 'Es ist ein besonderer Morgen.',
+    'contact-sub': 'Wir sind klein — 35m². Und genau deshalb freuen wir uns über jede Anfrage.',
+    'contact-response': 'Kein Bot. Wir lesen jede Nachricht selbst und antworten so schnell wir können.',
+    'filter-all': 'ALLE',
+    'filter-kaffee': 'KAFFEE',
+    'filter-kalt': 'KALT',
+    'filter-noncoffee': 'NON COFFEE',
+    'filter-food': 'FOOD',
+    'filter-signature': 'SIGNATURE ✦',
+    'filter-bohnen': 'BOHNEN',
+    'hero-reviews': '5.0 ★ Google · 200+ Bewertungen',
+    'hero-scroll': 'SCROLL',
+    'oat-badge': 'HAFERMILCH OHNE AUFPREIS',
+    'scroll-hint': 'Alles vegetarisch · Hafermilch ohne Aufpreis · Preise können variieren',
+    'badge-new': 'NEU',
+    'badge-summer': 'SOMMER',
+    'badge-classic': 'KLASSIKER',
+    'badge-homemade': 'HAUSGEMACHT',
+    'badge-dogs': 'Hunde willkommen',
+    'badge-card': 'Kartenzahlung',
+    'badge-wifi': 'WLAN verfügbar',
+    'badge-garden': 'Schanigarten',
+    'badge-allergens': 'Allergene auf Anfrage',
+    'herkunft-eyebrow': 'Woher euer Kaffee kommt',
+    'herkunft-title': 'Vier Länder. Farmer, die wir persönlich kennen.',
+    'herkunft-text': 'Wir kaufen grünen Kaffee direkt von den Produzenten — keine Zwischenhändler, keine Anonymität. Jede Bohne hat eine Geschichte. Wir reisen, verkosten und bauen echte Beziehungen auf. Das schmeckt man.',
+    'country-el-salvador': 'Lieblingsespresso · vollmundig',
+    'country-mexico': 'Schokoladig · perfekt als Filter',
+    'country-panama': 'Fruchtig · komplex · für Kenner',
+    'country-costarica': 'Hell · lebendig · Sommerfilter',
+    'quote-source': '— Google Bewertung · 5 Sterne · Haidgasse 10/2, Wien',
+    'quote-cta': 'Kommt vorbei. Mi–Fr ab 8:00.',
+    'founders-eyebrow': 'Das sind wir',
+    'founders-quote': 'Den Schlüssel haben wir am 1. Mai bekommen.',
+    'founders-text': 'Seitdem waren wir jeden einzigen Tag hier — reinigen, bauen, vorbereiten. Zusammen mit Familie und Freunden. Wir wollten nicht nach Deadline öffnen, sondern mit Intention. Wir kennen unsere Farmer persönlich. Wir rösten selbst, in kleinen Mengen. Jede Bohne hat eine Geschichte.',
+    'ig-follow': 'Folgen',
+  },
+  en: {
+    'nav-kaffee': 'Coffee',
+    'nav-ueber': 'About us',
+    'nav-hours': 'Opening hours',
+    'hero-line1': 'We know the people',
+    'hero-line2': 'who grow',
+    'hero-line3': 'your coffee.',
+    'btn-discover': 'Explore coffee',
+    'btn-visit': 'Visit us',
+    'menu-title': 'Coffee & Drinks',
+    'week-eyebrow': 'This week',
+    'week-title': 'What is on the menu right now.',
+    'menu-eyebrow': 'OUR MENU',
+    'review-eyebrow': 'What guests say',
+    'review-btn': 'All reviews',
+    'review-title': 'Did you enjoy it? Tell others.',
+    'review-text': 'Every review helps us — and the next guest who is not sure yet.',
+    'ig-eyebrow': 'From our everyday life',
+    'hours-eyebrow': 'When to find us',
+    'hours-title': 'Opening Hours',
+    'map-eyebrow': 'Where to find us',
+    'map-link': 'Show map (Google Maps)',
+    'map-btn': 'Load map',
+    'hours-garden': 'Small outdoor seating in good weather ☀️',
+    'day-mon': 'Monday',
+    'day-tue': 'Tuesday',
+    'day-wed': 'Wednesday',
+    'day-thu': 'Thursday',
+    'day-fri': 'Friday',
+    'day-sat': 'Saturday',
+    'day-sun': 'Sunday',
+    'day-closed': 'Closed',
+    'hours-exceptions': 'Holidays & exceptions: @smallbatch.cafe',
+    'hours-address': 'U2 Taborstraße · 5 min on foot',
+    'contact-btn': 'Send inquiry',
+    'contact-eyebrow': 'Inquiries',
+    'contact-title': 'Coming as a group?',
+    'form-name': 'Name',
+    'form-persons': 'Guests',
+    'form-date': 'Date',
+    'form-message': 'Message',
+    'form-placeholder-name': 'Your name',
+    'form-placeholder-persons': 'Number',
+    'form-placeholder-message': 'What are you planning?',
+    'hours-exceptions-pre': 'Holidays & closures on',
+    'footer-tagline': 'Specialty Coffee · House Roast · Vienna 1020',
+    'footer-links': 'Links',
+    'footer-legal-title': 'Legal',
+    'footer-menu': 'Menu',
+    'footer-imprint': 'Imprint',
+    'footer-privacy': 'Privacy Policy',
+    'cookie-text': 'We use cookies. By clicking "Accept" you agree to the use of all cookies.',
+    'cookie-decline': 'Necessary only',
+    'cookie-accept': 'Accept',
+    'footer-hours': 'Wed–Fri: 8:00–15:30 · Sat–Sun: 9:00–15:00 · Mon–Tue: Closed',
+    'contact-subtitle': 'It is a special morning.',
+    'contact-sub': 'We are small — 35m². And that is exactly why we appreciate every inquiry.',
+    'contact-response': 'No bot. We read every message ourselves and reply as quickly as we can.',
+    'filter-all': 'ALL',
+    'filter-kaffee': 'COFFEE',
+    'filter-kalt': 'COLD',
+    'filter-noncoffee': 'NON COFFEE',
+    'filter-food': 'FOOD',
+    'filter-signature': 'SIGNATURE ✦',
+    'filter-bohnen': 'BEANS',
+    'hero-reviews': '5.0 ★ Google · 200+ Reviews',
+    'hero-scroll': 'SCROLL',
+    'oat-badge': 'OAT MILK AT NO EXTRA CHARGE',
+    'scroll-hint': 'All vegetarian · Oat milk at no extra charge · Prices may vary',
+    'badge-new': 'NEW',
+    'badge-summer': 'SUMMER',
+    'badge-classic': 'CLASSIC',
+    'badge-homemade': 'HOMEMADE',
+    'badge-dogs': 'Dogs welcome',
+    'badge-card': 'Card payment',
+    'badge-wifi': 'WiFi available',
+    'badge-garden': 'Outdoor seating',
+    'badge-allergens': 'Allergens on request',
+    'herkunft-eyebrow': 'Where your coffee comes from',
+    'herkunft-title': 'Four countries. Farmers we know personally.',
+    'herkunft-text': 'We buy green coffee directly from producers — no middlemen, no anonymity. Every bean has a story. We travel, taste and build real relationships. You can taste the difference.',
+    'country-el-salvador': 'Favourite espresso · full-bodied',
+    'country-mexico': 'Chocolatey · perfect as filter',
+    'country-panama': 'Fruity · complex · for connoisseurs',
+    'country-costarica': 'Bright · lively · summer filter',
+    'quote-source': '— Google Review · 5 Stars · Haidgasse 10/2, Vienna',
+    'quote-cta': 'Come by. Wed–Fri from 8:00.',
+    'founders-eyebrow': 'This is us',
+    'founders-quote': 'We got the keys on the 1st of May.',
+    'founders-text': 'Since then we have been here every single day — cleaning, building, preparing. Together with family and friends. We did not want to open by deadline, but with intention. We know our farmers personally. We roast ourselves, in small batches. Every bean has a story.',
+    'ig-follow': 'Follow',
+  }
+};
+
+function setLang(lang) {
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (translations[lang] && translations[lang][key]) {
+      el.textContent = translations[lang][key];
+    }
+  });
+  // Language-specific hero lines
+  document.querySelectorAll('[data-lang-de]').forEach(el => {
+    el.style.display = lang === 'de' ? 'block' : 'none';
+  });
+  document.querySelectorAll('[data-lang-en]').forEach(el => {
+    el.style.display = lang === 'en' ? 'block' : 'none';
+  });
+  // Input placeholders
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+    const key = el.getAttribute('data-i18n-placeholder');
+    if (translations[lang] && translations[lang][key]) {
+      el.setAttribute('placeholder', translations[lang][key]);
+    }
+  });
+  // Drink card descriptions
+  document.querySelectorAll('[data-i18n-desc-de]').forEach(el => {
+    el.textContent = lang === 'en'
+      ? el.getAttribute('data-i18n-desc-en')
+      : el.getAttribute('data-i18n-desc-de');
+  });
+  // Update active button
+  document.getElementById('btn-de').classList.toggle('active', lang === 'de');
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+  document.documentElement.lang = lang;
+  localStorage.setItem('lang', lang);
+}
+
+// Init on load
+document.addEventListener('DOMContentLoaded', () => {
+  const saved = localStorage.getItem('lang') || 'de';
+  setLang(saved);
+});
+</script>
+
+</body>
+</html>
