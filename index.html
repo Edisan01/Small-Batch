@@ -377,7 +377,7 @@ nav.scrolled .nav-links a{color:#767676;}
 /* Subtle window photo bg */
 .quote-bg-img{
   position:absolute;inset:0;
-  background-image:url('bilder/quote-bg.jpg');
+  background-image:url('quote-bg.jpg');
   background-size:cover;
   background-position:center;
   opacity:0.05;
@@ -1113,7 +1113,7 @@ nav.scrolled .lang-switch span { color:rgba(17,16,14,0.2) !important; }
 <!-- HERO -->
 <section class="hero">
   <div class="hero-bg">
-    <img src="bilder/hero.jpg" alt="small batch café Wien Bogenfenster mit gezeichnetem Logo" style="width:100%;height:100%;object-fit:cover;" loading="lazy">
+    <img src="hero.jpg" alt="small batch café Wien Bogenfenster mit gezeichnetem Logo" style="width:100%;height:100%;object-fit:cover;" loading="lazy">
   </div>
   <div class="hero-content">
     <div class="hero-big-text">
@@ -1207,12 +1207,12 @@ nav.scrolled .lang-switch span { color:rgba(17,16,14,0.2) !important; }
   <!-- CATEGORY FILTERS -->
   <div class="cat-filters" id="cat-filters">
     <button class="cat-btn active" data-cat="all" data-bg="" onclick="filterCat(this)" data-i18n="filter-all">Alle</button>
-    <button class="cat-btn" data-cat="kaffee" onclick="filterCat(this)" data-bg="bilder/cat-kaffee.png" data-i18n="filter-kaffee">Kaffee</button>
-    <button class="cat-btn" data-cat="signature" onclick="filterCat(this)" data-bg="bilder/cat-signature.png" data-i18n="filter-signature">Signature ✦</button>
-    <button class="cat-btn" data-cat="kalt" onclick="filterCat(this)" data-bg="bilder/cat-kalt-2.png" data-i18n="filter-kalt">Kalt</button>
-    <button class="cat-btn" data-cat="noncoffee" onclick="filterCat(this)" data-bg="bilder/cat-kaffee-tisch.png" data-i18n="filter-noncoffee">Non Coffee</button>
-    <button class="cat-btn" data-cat="food" onclick="filterCat(this)" data-bg="bilder/cat-food.png" data-i18n="filter-food">Food</button>
-    <button class="cat-btn" data-cat="bags" onclick="filterCat(this)" data-bg="bilder/cat-bags.png" data-i18n="filter-bohnen">Bohnen</button>
+    <button class="cat-btn" data-cat="kaffee" onclick="filterCat(this)" data-bg="cat-kaffee.png" data-i18n="filter-kaffee">Kaffee</button>
+    <button class="cat-btn" data-cat="signature" onclick="filterCat(this)" data-bg="cat-signature.png" data-i18n="filter-signature">Signature ✦</button>
+    <button class="cat-btn" data-cat="kalt" onclick="filterCat(this)" data-bg="cat-kalt-2.png" data-i18n="filter-kalt">Kalt</button>
+    <button class="cat-btn" data-cat="noncoffee" onclick="filterCat(this)" data-bg="cat-kaffee-tisch.png" data-i18n="filter-noncoffee">Non Coffee</button>
+    <button class="cat-btn" data-cat="food" onclick="filterCat(this)" data-bg="cat-food.png" data-i18n="filter-food">Food</button>
+    <button class="cat-btn" data-cat="bags" onclick="filterCat(this)" data-bg="cat-bags.png" data-i18n="filter-bohnen">Bohnen</button>
   </div>
   <!-- CATEGORY BG -->
   <div class="cat-bg" id="cat-bg"></div>
@@ -1235,14 +1235,14 @@ nav.scrolled .lang-switch span { color:rgba(17,16,14,0.2) !important; }
     <div class="drink-card" data-cat="kalt"><div class="drink-name">Matcha Tonic</div><div class="drink-desc" data-i18n-desc-de="Iced · erfrischend" data-i18n-desc-en="Iced · refreshing">Iced · erfrischend</div><div class="drink-price">€5,50</div></div>
     <div class="drink-card" data-cat="kalt"><div class="drink-name">Matcha Agave Lemon Soda</div><div class="drink-desc" data-i18n-desc-de="Iced · leicht · sommerlich" data-i18n-desc-en="Iced · light · summery">Iced · leicht · sommerlich</div><div class="drink-price">€5,50</div></div>
     <div class="drink-card" data-cat="kalt"><div class="drink-name">Hōjicha Cherry</div><div class="drink-desc" data-i18n-desc-de="Iced · fruchtig" data-i18n-desc-en="Iced · fruity">Iced · fruchtig</div><div class="drink-price">€5,50</div></div>
-    <div class="drink-card drink-card--signature" data-cat="kalt signature" data-img="bilder/cat-signature.png" data-label="Espresso Martini" onclick="openLightbox(this)"><div class="drink-badge">Signature</div><div class="drink-name">Espresso Martini</div><div class="drink-desc" data-i18n-desc-de="Iced · Signature" data-i18n-desc-en="Iced · Signature">Iced · Signature</div><div class="drink-price">€10,–</div></div>
+    <div class="drink-card drink-card--signature" data-cat="kalt signature" data-img="cat-signature.png" data-label="Espresso Martini" onclick="openLightbox(this)"><div class="drink-badge">Signature</div><div class="drink-name">Espresso Martini</div><div class="drink-desc" data-i18n-desc-de="Iced · Signature" data-i18n-desc-en="Iced · Signature">Iced · Signature</div><div class="drink-price">€10,–</div></div>
     <div class="drink-card" data-cat="noncoffee"><div class="drink-name">Tea</div><div class="drink-desc" data-i18n-desc-de="Auswahl täglich" data-i18n-desc-en="Selection changes daily">Auswahl täglich</div><div class="drink-price">€4,50</div></div>
     <div class="drink-card" data-cat="noncoffee"><div class="drink-name">Hot Chocolate</div><div class="drink-desc" data-i18n-desc-de="Hausgemacht · cremig" data-i18n-desc-en="Homemade · creamy">Hausgemacht · cremig</div><div class="drink-price">€4,90</div></div>
     <div class="drink-card" data-cat="noncoffee"><div class="drink-name">Chai</div><div class="drink-desc" data-i18n-desc-de="Gewürzt · wärmend" data-i18n-desc-en="Spiced · warming">Gewürzt · wärmend</div><div class="drink-price">€5,20</div></div>
     <div class="drink-card" data-cat="noncoffee"><div class="drink-name">Hōjicha</div><div class="drink-desc" data-i18n-desc-de="Geröstet · warm · komplex" data-i18n-desc-en="Roasted · warm · complex">Geröstet · warm · komplex</div><div class="drink-price">€5,20</div></div>
     <div class="drink-card" data-cat="noncoffee"><div class="drink-name">Matcha</div><div class="drink-desc" data-i18n-desc-de="Selten so gut in Wien" data-i18n-desc-en="Rarely this good in Vienna">Selten so gut in Wien</div><div class="drink-price">€5,50</div></div>
-    <div class="drink-card" data-cat="food" data-img="bilder/cat-food.png" data-label="Joghurt & Granola" onclick="openLightbox(this)"><div class="drink-name">Joghurt & Granola</div><div class="drink-desc" data-i18n-desc-de="Omi's Rezept · Hausgemacht" data-i18n-desc-en="Grandma's recipe · homemade">Omi's Rezept · Hausgemacht</div><div class="drink-price">€8,–</div></div>
-    <div class="drink-card" data-cat="food" data-img="bilder/cat-food-kuchen.png" data-label="Kuchen" onclick="openLightbox(this)"><div class="drink-name">Kuchen</div><div class="drink-desc" data-i18n-desc-de="Hausgemacht & vegan" data-i18n-desc-en="Homemade & vegan">Hausgemacht & vegan</div><div class="drink-price">€4,90</div></div>
+    <div class="drink-card" data-cat="food" data-img="cat-food.png" data-label="Joghurt & Granola" onclick="openLightbox(this)"><div class="drink-name">Joghurt & Granola</div><div class="drink-desc" data-i18n-desc-de="Omi's Rezept · Hausgemacht" data-i18n-desc-en="Grandma's recipe · homemade">Omi's Rezept · Hausgemacht</div><div class="drink-price">€8,–</div></div>
+    <div class="drink-card" data-cat="food" data-img="cat-food-kuchen.png" data-label="Kuchen" onclick="openLightbox(this)"><div class="drink-name">Kuchen</div><div class="drink-desc" data-i18n-desc-de="Hausgemacht & vegan" data-i18n-desc-en="Homemade & vegan">Hausgemacht & vegan</div><div class="drink-price">€4,90</div></div>
     <div class="drink-card" data-cat="food"><div class="drink-name">Oliven</div><div class="drink-desc" data-i18n-desc-de="Kleine Snacks" data-i18n-desc-en="Small snacks">Kleine Snacks</div><div class="drink-price">€3,50</div></div>
     <div class="drink-card drink-card--bags" data-cat="bags"><div class="drink-badge">Bohnen</div><div class="drink-name">S · 200g</div><div class="drink-desc" data-i18n-desc-de="Eigene Röstung · zum Mitnehmen" data-i18n-desc-en="House roast · to take home">Eigene Röstung · zum Mitnehmen</div><div class="drink-price">€13,–</div></div>
     <div class="drink-card drink-card--bags" data-cat="bags"><div class="drink-badge">Bohnen</div><div class="drink-name">M · 500g</div><div class="drink-desc" data-i18n-desc-de="Eigene Röstung · zum Mitnehmen" data-i18n-desc-en="House roast · to take home">Eigene Röstung · zum Mitnehmen</div><div class="drink-price">€27,–</div></div>
@@ -1299,7 +1299,7 @@ nav.scrolled .lang-switch span { color:rgba(17,16,14,0.2) !important; }
 <!-- FOUNDERS -->
 <section class="founders-section" id="ueber">
   <div class="founders-img">
-    <img src="bilder/founders.jpg" alt="Nadine und Clemens small batch café Wien" style="width:100%;height:100%;object-fit:cover;" loading="lazy">
+    <img src="founders.jpg" alt="Nadine und Clemens small batch café Wien" style="width:100%;height:100%;object-fit:cover;" loading="lazy">
   </div>
   <div class="founders-gradient"></div>
   <div class="founders-text">
@@ -1323,12 +1323,12 @@ nav.scrolled .lang-switch span { color:rgba(17,16,14,0.2) !important; }
 </a>
   </div>
   <div class="ig-grid">
-    <div class="ig-item"><img src="bilder/ig-1.jpg" alt="Latte Art small batch café" style="width:100%;height:100%;object-fit:cover;" loading="lazy"><div class="ig-overlay"><span class="ig-handle">@smallbatch.cafe</span></div></div>
-    <div class="ig-item"><img src="bilder/ig-2.jpg" alt="Bogenfenster small batch café" style="width:100%;height:100%;object-fit:cover;" loading="lazy"><div class="ig-overlay"><span class="ig-handle">@smallbatch.cafe</span></div></div>
-    <div class="ig-item"><img src="bilder/ig-3.jpg" alt="Seit 2023 small batch café" style="width:100%;height:100%;object-fit:cover;" loading="lazy"><div class="ig-overlay"><span class="ig-handle">@smallbatch.cafe</span></div></div>
-    <div class="ig-item"><img src="bilder/ig-4.jpg" alt="Kaffeebeutel small batch café" style="width:100%;height:100%;object-fit:cover;" loading="lazy"><div class="ig-overlay"><span class="ig-handle">@smallbatch.cafe</span></div></div>
-    <div class="ig-item"><img src="bilder/ig-5.jpg" alt="Sofa small batch café Wien" style="width:100%;height:100%;object-fit:cover;" loading="lazy"><div class="ig-overlay"><span class="ig-handle">@smallbatch.cafe</span></div></div>
-    <div class="ig-item"><img src="bilder/ig-6.jpg" alt="small batch café Logo" style="width:100%;height:100%;object-fit:cover;" loading="lazy"><div class="ig-overlay"><span class="ig-handle">@smallbatch.cafe</span></div></div>
+    <div class="ig-item"><img src="ig-1.jpg" alt="Latte Art small batch café" style="width:100%;height:100%;object-fit:cover;" loading="lazy"><div class="ig-overlay"><span class="ig-handle">@smallbatch.cafe</span></div></div>
+    <div class="ig-item"><img src="ig-2.jpg" alt="Bogenfenster small batch café" style="width:100%;height:100%;object-fit:cover;" loading="lazy"><div class="ig-overlay"><span class="ig-handle">@smallbatch.cafe</span></div></div>
+    <div class="ig-item"><img src="ig-3.jpg" alt="Seit 2023 small batch café" style="width:100%;height:100%;object-fit:cover;" loading="lazy"><div class="ig-overlay"><span class="ig-handle">@smallbatch.cafe</span></div></div>
+    <div class="ig-item"><img src="ig-4.jpg" alt="Kaffeebeutel small batch café" style="width:100%;height:100%;object-fit:cover;" loading="lazy"><div class="ig-overlay"><span class="ig-handle">@smallbatch.cafe</span></div></div>
+    <div class="ig-item"><img src="ig-5.jpg" alt="Sofa small batch café Wien" style="width:100%;height:100%;object-fit:cover;" loading="lazy"><div class="ig-overlay"><span class="ig-handle">@smallbatch.cafe</span></div></div>
+    <div class="ig-item"><img src="ig-6.jpg" alt="small batch café Logo" style="width:100%;height:100%;object-fit:cover;" loading="lazy"><div class="ig-overlay"><span class="ig-handle">@smallbatch.cafe</span></div></div>
   </div>
 </section>
 
@@ -1586,11 +1586,11 @@ if(localStorage.getItem('cc'))document.getElementById('cookie').style.display='n
 
 </style>
 <div id="bean-wrap">
-  <img id="bean-sprite" src="bilder/bean.png" alt="">
+  <img id="bean-sprite" src="bean.png" alt="">
 </div>
 <div id="cup-wrap">
 <div id="splash-el" style="position:absolute;top:25px;left:45%;transform:translateX(-50%);pointer-events:none;transform-origin:center bottom;"><svg width="144" height="72" viewBox="0 0 120 60"><ellipse cx="60" cy="52" rx="4" ry="10" fill="#7a4a28" opacity="0.85" transform="rotate(0,60,52)"/><ellipse cx="35" cy="42" rx="4" ry="12" fill="#7a4a28" opacity="0.75" transform="rotate(-25,35,42)"/><ellipse cx="18" cy="28" rx="3" ry="10" fill="#8a5535" opacity="0.7" transform="rotate(-40,18,28)"/><ellipse cx="85" cy="42" rx="4" ry="12" fill="#7a4a28" opacity="0.75" transform="rotate(25,85,42)"/><ellipse cx="102" cy="28" rx="3" ry="10" fill="#8a5535" opacity="0.7" transform="rotate(40,102,28)"/><circle cx="10" cy="35" r="3" fill="#9a6040" opacity="0.5"/><circle cx="110" cy="32" r="3" fill="#9a6040" opacity="0.5"/><ellipse cx="60" cy="8" rx="3" ry="9" fill="#6b3a1f" opacity="0.85"/></svg></div>
-<img src="bilder/tasse.png" alt="small batch café" style="width:180px;height:auto;display:block;">
+<img src="tasse.png" alt="small batch café" style="width:180px;height:auto;display:block;">
 </div>
 <script>
 // CATEGORY FILTER
