@@ -752,7 +752,7 @@ section + section,
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
-  .hero-bg img { transform: none !important; }
+  .hero-bg img { transform: none !important; object-position: center center !important; }
   .marquee-track { animation: none !important; }
   #bean-wrap { display: none !important; }
 }
@@ -761,7 +761,7 @@ section + section,
 
 /* ── MOBILE OVERHAUL ── */
 @media(max-width:768px){
-  #bean-wrap{right:5px !important;width:24px !important;height:24px !important;}
+  #bean-wrap{right:48px !important;width:24px !important;height:24px !important;}
   .mobile-bottom-bar{display:flex;}
   body{padding-bottom:80px;}
   /* Hide non-essential sections on mobile */
@@ -769,7 +769,7 @@ section + section,
   .herkunft-section{display:none !important;}
   .quote-section{display:none !important;}
   .review-section{display:none !important;}
-  #cup-wrap{right:5px !important;width:90px !important;height:81px !important;bottom:60px !important;}
+  #cup-wrap{right:15px !important;width:90px !important;height:81px !important;bottom:60px !important;}
   /* Hide desktop cursor */
   body{cursor:auto;}
   #cursor,#cursor-ring{display:none;}
@@ -781,7 +781,7 @@ section + section,
   .nav-center{font-size:0.58rem;gap:5px;}
 
   /* HERO */
-  .hero-content{padding:0 1.2rem 4rem;justify-content:flex-end;}
+  .hero-content{padding:2rem 1.2rem;justify-content:center;}
   .hero-big-text{font-size:clamp(1.7rem,6.5vw,2.2rem);}
   .hero-meta{display:none;}
   .hero-cta-wrap{flex-direction:column;gap:0.6rem;width:100%;margin-top:1.5rem;}
@@ -902,6 +902,17 @@ section + section,
   /* FOOTER */
   footer{grid-template-columns:1fr;padding:2rem 1.2rem;gap:1.5rem;}
   .footer-legal{font-size:0.55rem;}
+  footer{
+    grid-template-columns:1fr !important;
+    padding:2.5rem 1.5rem !important;
+    gap:1.5rem !important;
+    text-align:center;
+  }
+  .footer-logo{font-size:1.6rem;}
+  .footer-hours{font-size:0.7rem;line-height:1.8;}
+  .footer-links{align-items:center;}
+  .footer-col-title{margin-bottom:0.6rem;}
+  .footer-legal{text-align:center;margin-top:1rem;}
 
   /* BEAN */
   
