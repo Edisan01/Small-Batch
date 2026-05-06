@@ -752,7 +752,7 @@ section + section,
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
-  .hero-bg img { transform: none !important; object-position: center center !important; }
+  .hero-bg img, .hero-img { transform: none !important; object-position: center 30% !important; }
   .marquee-track { animation: none !important; }
   #bean-wrap { display: none !important; }
 }
@@ -761,7 +761,7 @@ section + section,
 
 /* ── MOBILE OVERHAUL ── */
 @media(max-width:768px){
-  #bean-wrap{right:48px !important;width:24px !important;height:24px !important;}
+  #bean-wrap{right:97px !important;width:47px !important;height:47px !important;}
   .mobile-bottom-bar{display:flex;}
   body{padding-bottom:80px;}
   /* Hide non-essential sections on mobile */
@@ -769,7 +769,7 @@ section + section,
   .herkunft-section{display:none !important;}
   .quote-section{display:none !important;}
   .review-section{display:none !important;}
-  #cup-wrap{right:15px !important;width:90px !important;height:81px !important;bottom:60px !important;}
+  #cup-wrap{right:30px !important;width:180px !important;height:162px !important;bottom:90px !important;}
   /* Hide desktop cursor */
   body{cursor:auto;}
   #cursor,#cursor-ring{display:none;}
@@ -781,7 +781,7 @@ section + section,
   .nav-center{font-size:0.58rem;gap:5px;}
 
   /* HERO */
-  .hero-content{padding:2rem 1.2rem;justify-content:center;}
+  .hero-content{padding:2rem 1.2rem;display:flex;flex-direction:column;justify-content:center;min-height:80vh;}
   .hero-big-text{font-size:clamp(1.7rem,6.5vw,2.2rem);}
   .hero-meta{display:none;}
   .hero-cta-wrap{flex-direction:column;gap:0.6rem;width:100%;margin-top:1.5rem;}
@@ -1223,7 +1223,7 @@ nav.scrolled .lang-switch span { color:rgba(17,16,14,0.2) !important; }
 <!-- HERO -->
 <section class="hero">
   <div class="hero-bg">
-    <img src="hero.jpg" alt="small batch café Wien Bogenfenster mit gezeichnetem Logo" style="width:100%;height:100%;object-fit:cover;" loading="lazy">
+    <img src="hero.jpg" alt="small batch café Wien Bogenfenster mit gezeichnetem Logo" style="width:100%;height:100%;object-fit:cover;" loading="lazy" class="hero-img">
   </div>
   <div class="hero-content">
     <div class="hero-big-text">
