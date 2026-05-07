@@ -769,7 +769,7 @@ section + section,
   .herkunft-section{display:none !important;}
   .quote-section{display:none !important;}
   .review-section{display:none !important;}
-  #cup-wrap{right:10px !important;width:90px !important;height:81px !important;bottom:170px !important;}
+  #cup-wrap{display:none !important;}
   /* Hide desktop cursor */
   body{cursor:auto;}
   #cursor,#cursor-ring{display:none;}
@@ -1534,7 +1534,10 @@ nav.scrolled .lang-switch span { color:rgba(17,16,14,0.2) !important; }
       <li><a href="#" onclick="document.getElementById('m-dsg').classList.add('open');return false" aria-label="Datenschutz öffnen" data-i18n="footer-privacy">Datenschutz</a></li>
     </ul>
   </div>
-  <div class="footer-legal">© 2026 small batch OG · FN 648914 k · Haidgasse 10/2 · 1020 Wien · Inhaber: Nadine Unterweger, Clemens Erlsbacher</div>
+  <div class="footer-legal" style="position:relative;">
+  <img src="tasse.png" alt="" class="footer-cup" style="position:absolute;right:0;bottom:100%;width:90px;height:auto;pointer-events:none;">
+  © 2026 small batch OG · FN 648914 k · Haidgasse 10/2 · 1020 Wien · Inhaber: Nadine Unterweger, Clemens Erlsbacher
+</div>
 </footer>
 
 <!-- MODALS -->
