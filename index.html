@@ -759,6 +759,13 @@ section + section,
 
 /* ── MOBILE ── */
 
+/* SPLASH FOOTER */
+@keyframes splashFloat {
+  0%,100% { transform:translateY(0px); opacity:0.9; }
+  50%      { transform:translateY(-4px); opacity:1; }
+}
+#splash-el { animation: splashFloat 3s ease-in-out infinite; }
+
 /* ── MOBILE OVERHAUL ── */
 @media(max-width:768px){
   #bean-wrap{right:43px !important;width:23px !important;height:23px !important;}
@@ -1536,6 +1543,9 @@ nav.scrolled .lang-switch span { color:rgba(17,16,14,0.2) !important; }
   </div>
   <div class="footer-legal" style="position:relative;">
   <img src="tasse.png" alt="" class="footer-cup" style="position:absolute;right:-14px;bottom:100%;width:90px;height:auto;pointer-events:none;">
+  <div id="splash-el" style="position:absolute;right:-5px;bottom:calc(100% + 86px);width:72px;pointer-events:none;opacity:0;transition:opacity 0.3s ease;">
+    <svg width="72" height="44" viewBox="0 0 72 44"><ellipse cx="36" cy="38" rx="2.5" ry="6" fill="#7a4a28" opacity="0.85"/><ellipse cx="22" cy="30" rx="2.5" ry="7" fill="#7a4a28" opacity="0.75" transform="rotate(-20,22,30)"/><ellipse cx="11" cy="20" rx="2" ry="6" fill="#8a5535" opacity="0.7" transform="rotate(-35,11,20)"/><ellipse cx="50" cy="30" rx="2.5" ry="7" fill="#7a4a28" opacity="0.75" transform="rotate(20,50,30)"/><ellipse cx="61" cy="20" rx="2" ry="6" fill="#8a5535" opacity="0.7" transform="rotate(35,61,20)"/><circle cx="4" cy="26" r="2" fill="#9a6040" opacity="0.5"/><circle cx="68" cy="24" r="2" fill="#9a6040" opacity="0.5"/><ellipse cx="36" cy="5" rx="2" ry="5.5" fill="#6b3a1f" opacity="0.85"/></svg>
+  </div>
   © 2026 small batch OG · FN 648914 k · Haidgasse 10/2 · 1020 Wien · Inhaber: Nadine Unterweger, Clemens Erlsbacher
 </div>
 </footer>
@@ -1797,6 +1807,11 @@ function openLightbox(card) {
     if(window.innerWidth > 768){
       if(p > 0.88){ cw.style.opacity='1'; cw.style.visibility='visible'; }
       else { cw.style.opacity='0'; cw.style.visibility='hidden'; }
+    }
+    // Show splash when bean lands
+    const splashEl = document.getElementById('splash-el');
+    if(splashEl){
+      splashEl.style.opacity = p > 0.88 ? '1' : '0';
     }
 
     // Splash
