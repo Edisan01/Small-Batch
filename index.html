@@ -205,6 +205,11 @@ nav.scrolled .nav-links a{color:#767676;}
   background:linear-gradient(to right, rgba(10,8,6,0.85) 0%, rgba(10,8,6,0.65) 55%, rgba(10,8,6,0.2) 100%),
              linear-gradient(to top, rgba(10,8,6,0.7) 0%, transparent 50%);
 }
+@media(max-width:768px){
+  .hero-bg::after{
+    background:linear-gradient(to top, rgba(10,8,6,0.85) 0%, rgba(10,8,6,0.4) 40%, transparent 70%);
+  }
+}
 .hero-content{
   position:relative;z-index:2;
   padding:0 4rem 5rem;
@@ -752,7 +757,7 @@ section + section,
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
-  .hero-bg img, .hero-img { transform: none !important; object-position: center 30% !important; }
+  .hero-bg img, .hero-img { transform: none !important; object-position: 35% 60% !important; }
   .marquee-track { animation: none !important; }
   #bean-wrap { display: none !important; }
 }
@@ -788,15 +793,15 @@ section + section,
   .nav-center{font-size:0.58rem;gap:5px;}
 
   /* HERO */
-  .hero{align-items:center !important;}
-  .hero-content{padding:2rem 1.2rem;display:flex;flex-direction:column;justify-content:center;width:100%;}
-  .hero-big-text{font-size:clamp(1.7rem,6.5vw,2.2rem);}
+  .hero{align-items:stretch !important;height:70vh !important;justify-content:flex-start !important;}
+  .hero-content{padding:35vh 1.2rem 2rem;display:flex;flex-direction:column;justify-content:flex-start;width:100%;}
+  .hero-big-text{font-size:clamp(1.7rem,6.5vw,2.2rem);line-height:1.15;}
   .hero-meta{display:none !important;}
   .hero-cta-wrap{flex-direction:column;gap:0.6rem;width:100%;margin-top:1.5rem;}
   .hero-btn-outline{display:none;}
-  .hero-btn-fill{width:100%;text-align:center;justify-content:center;padding:1rem;font-size:0.75rem;}
+  .hero-btn-fill{width:auto !important;padding:0.85rem 2rem !important;border-radius:980px !important;align-self:flex-start;font-size:0.75rem;}
   .hero-btn{width:100%;text-align:center;padding:1rem;}
-  .hero-scroll{display:none;}
+  .hero-scroll{display:none !important;}
 
   /* MARQUEE */
   .marquee-item{font-size:0.6rem;padding:0 1rem;}
