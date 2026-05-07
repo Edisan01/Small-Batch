@@ -1535,7 +1535,7 @@ nav.scrolled .lang-switch span { color:rgba(17,16,14,0.2) !important; }
     </ul>
   </div>
   <div class="footer-legal" style="position:relative;">
-  <img src="tasse.png" alt="" class="footer-cup" style="position:absolute;right:10px;bottom:100%;width:90px;height:auto;pointer-events:none;">
+  <img src="tasse.png" alt="" class="footer-cup" style="position:absolute;right:-14px;bottom:100%;width:90px;height:auto;pointer-events:none;">
   © 2026 small batch OG · FN 648914 k · Haidgasse 10/2 · 1020 Wien · Inhaber: Nadine Unterweger, Clemens Erlsbacher
 </div>
 </footer>
@@ -1793,9 +1793,11 @@ function openLightbox(card) {
       ? String(Math.max(0, 1-(p-0.88)/0.04))
       : p < 0.02 ? '0' : '1';
 
-    // Show cup
-    if(p > 0.88){ cw.style.opacity='1'; cw.style.visibility='visible'; }
-    else { cw.style.opacity='0'; cw.style.visibility='hidden'; }
+    // Show cup (desktop only)
+    if(window.innerWidth > 768){
+      if(p > 0.88){ cw.style.opacity='1'; cw.style.visibility='visible'; }
+      else { cw.style.opacity='0'; cw.style.visibility='hidden'; }
+    }
 
     // Splash
 
